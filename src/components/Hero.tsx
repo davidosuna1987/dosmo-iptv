@@ -36,7 +36,7 @@ export function Hero({ item }: HeroProps) {
                       <PlayIcon className="w-6 h-6" />
                       Reproducir
                   </Button>
-                  <Button size="lg" variant="secondary" className="w-full font-bold bg-black/30 text-white hover:bg-neutral-800 border-0">
+                  <Button size="lg" variant="secondary" className="w-full font-bold hover:bg-primary/90 border-0">
                       <Plus className="w-6 h-6" />
                       Mi Lista
                   </Button>
