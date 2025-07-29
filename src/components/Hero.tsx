@@ -28,16 +28,16 @@ export function Hero({ item }: HeroProps) {
           priority
           data-ai-hint="movie poster"
         />
-        <div className="absolute inset-0 flex flex-col justify-end p-3 bg-gradient-to-t from-black to-transparent rounded-xl">
+        <div className="absolute inset-0 flex flex-col justify-end px-3 bg-gradient-to-t from-black to-transparent rounded-xl">
           <div className="space-y-3">
               <p className="text-sm font-semibold tracking-wide uppercase text-primary">b PELÍCULAS</p>
               <div className="grid grid-cols-2 gap-3">
                   <Button size="lg" className="w-full font-bold border-0">
-                      <PlayIcon className="w-6 h-6" />
+                      <PlayIcon />
                       Reproducir
                   </Button>
-                  <Button size="lg" variant="secondary" className="w-full font-bold hover:bg-primary/90 border-0">
-                      <Plus className="w-6 h-6" />
+                  <Button size="lg" variant="secondary" className="w-full font-bold border-0">
+                      <Plus />
                       Mi Lista
                   </Button>
               </div>
