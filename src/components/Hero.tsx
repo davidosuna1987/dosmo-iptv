@@ -32,11 +32,11 @@ export function Hero({ item }: HeroProps) {
           <div className="space-y-3">
               <p className="text-sm font-semibold tracking-wide uppercase text-primary">b PELÍCULAS</p>
               <div className="grid grid-cols-2 gap-3">
-                  <Button size="lg" className="w-full font-bold bg-white text-black hover:bg-white/90">
+                  <Button size="lg" className="w-full font-bold">
                       <PlayIcon className="w-6 h-6" />
                       Reproducir
                   </Button>
-                  <Button size="lg" variant="outline" className="w-full font-bold bg-black/30 border-neutral-500 text-white hover:bg-neutral-800 hover:border-neutral-400">
+                  <Button size="lg" variant="secondary" className="w-full font-bold bg-black/30 text-white hover:bg-neutral-800 border-0">
                       <Plus className="w-6 h-6" />
                       Mi Lista
                   </Button>
