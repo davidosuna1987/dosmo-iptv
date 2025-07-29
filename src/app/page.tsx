@@ -5,7 +5,7 @@ import { heroItem, homeSections } from '@/lib/data';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#660000] to-black text-white px-4 md:px-6">
+    <main className="min-h-screen bg-background text-white px-4 md:px-6">
       <TopBar />
       <Hero item={heroItem} />
       <div className="flex flex-col mt-10 space-y-10">
