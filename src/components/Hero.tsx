@@ -38,7 +38,7 @@ export function Hero({ item }: HeroProps) {
                   </Button>
                   <Button size="lg" variant="secondary" className="w-full font-bold border-0">
                       <Plus />
-                      Mi Lista
+                      Favoritos
                   </Button>
               </div>
           </div>
