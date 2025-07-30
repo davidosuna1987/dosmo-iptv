@@ -2,7 +2,7 @@ import Image from 'next/image';
 import type { CarouselItem } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
-import { BIcon } from './navbar/bottom-navbar';
+import { DosmoIptvLogo } from './dosmo-iptv-logo';
 
 const Play = ({ className }: { className?: string }) => (
     <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -18,7 +18,7 @@ export function Hero({ item }: HeroProps) {
   const [width, height] = item.posterPath.split('x').map(Number);
 
   return (
-    <div className="flex justify-center bg-background relative -mt-16 -mx-4 md:-mx-8">
+    <div className="flex justify-center bg-background relative -mx-4 md:-mx-8">
       <div className='absolute size-full after:content-[""] after:absolute after:inset-0 after:pointer-events-none after:bg-gradient-to-t after:from-black after:to-black/90'> {/*after:bg-background after:opacity-[0.925]*/}
         <Image
           src="https://via.assets.so/movie.png?id=1&q=95&w=280&h=410&fit=contain"
@@ -42,8 +42,8 @@ export function Hero({ item }: HeroProps) {
         />
         <div className="absolute inset-0 flex flex-col justify-end px-3 pb-3 bg-gradient-to-t from-black to-transparent rounded-xl">
           <div className="space-y-3">
-              <p className="text-sm font-semibold tracking-wide uppercase text-primary flex items-center">
-                <BIcon />
+              <p className="text-sm font-semibold tracking-wide uppercase text-primary flex items-center gap-3">
+                <DosmoIptvLogo className='w-8' />
                 PELÍCULAS
               </p>
               <div className="grid grid-cols-2 gap-3">

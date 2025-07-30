@@ -1,4 +1,4 @@
-import { SearchBar } from '@/components/common/navbar/search-bar';
+import { TopNavbar } from '@/components/common/navbar/top-navbar';
 import { Hero } from '@/components/common/hero';
 import { CarouselWrapper } from '@/components/common/carousel/carousel-wrapper';
 import { heroItem, homeSections } from '@/lib/data';
@@ -8,7 +8,7 @@ import { CarouselSection } from '@/components/common/carousel/carousel-section';
 export default function SeriesPage() {
   return (
     <Main>
-      <SearchBar />
+      <TopNavbar />
       <Hero item={heroItem} />
       <CarouselSection>
         {homeSections.map(section => (
