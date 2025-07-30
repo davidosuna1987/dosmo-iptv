@@ -13,6 +13,20 @@ export interface HomeSection {
   items: CarouselItem[];
 }
 
+export interface LiveShowItem {
+  id: number;
+  posterPath: string;
+  title: string;
+}
+
+export interface LiveSection {
+  id: string;
+  title: string;
+  seeAllRoute: string;
+  items: LiveShowItem[];
+}
+
+
 export const heroItem: CarouselItem = {
   id: 100,
   posterPath: '280x420',
@@ -55,6 +69,44 @@ export const homeSections: HomeSection[] = [
       { ...commonItems[3], id: 10, title: 'Viaje a las Estrellas' },
       { ...commonItems[4], id: 11, title: 'El Secreto del Océano' },
       { ...commonItems[5], id: 12, title: 'Leyendas del Deporte' },
+    ],
+  },
+];
+
+
+const commonLiveItems: Omit<LiveShowItem, 'id' | 'title'>[] = [
+  { posterPath: '120x80' },
+  { posterPath: '120x80' },
+  { posterPath: '120x80' },
+  { posterPath: '120x80' },
+];
+
+export const liveSections: LiveSection[] = [
+  {
+    id: 'masmedia-gold',
+    title: 'ES | MASMEDIA GOLD',
+    seeAllRoute: '/live/masmedia-gold',
+    items: [
+      { ...commonLiveItems[0], id: 201, title: 'M+: La 1 RAW' },
+      { ...commonLiveItems[1], id: 202, title: 'M+: La 2 RAW' },
+    ],
+  },
+  {
+    id: 'tivify-hd',
+    title: 'ES | TIVIFY HD',
+    seeAllRoute: '/live/tivify-hd',
+    items: [
+      { ...commonLiveItems[0], id: 203, title: 'ES: LA 2 HD' },
+      { ...commonLiveItems[1], id: 204, title: 'ES: LA SEXTA HD' },
+    ],
+  },
+  {
+    id: 'tivify-gold',
+    title: 'ES | TIVIFY GOLD',
+    seeAllRoute: '/live/tivify-gold',
+    items: [
+      { ...commonLiveItems[0], id: 205, title: 'TY: CANAL MÁLAGA RAW' },
+      { ...commonLiveItems[1], id: 206, title: 'TY: CANAL PARLAMENTO RAW' },
     ],
   },
 ];

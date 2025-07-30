@@ -15,7 +15,7 @@ export function BottomNavBar() {
   const navItems = [
     { href: '/movies', icon: Clapperboard, label: 'Movies' },
     { href: '/series', icon: Library, label: 'Series' },
-    { href: '#', icon: Tv, label: 'Live' },
+    { href: '/live', icon: Tv, label: 'Live' },
     { href: '#', icon: BIcon, label: 'My Space' },
   ];
 
