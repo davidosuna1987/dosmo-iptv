@@ -2,6 +2,7 @@ import { TopBar } from '@/components/TopBar';
 import { Hero } from '@/components/Hero';
 import { Section } from '@/components/Section';
 import { heroItem, homeSections } from '@/lib/data';
+import { BottomNavBar } from '@/components/BottomNavBar';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         ))}
       </div>
       <div className="pb-24" />
+      <BottomNavBar />
     </main>
   );
 }
