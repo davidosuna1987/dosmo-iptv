@@ -15,7 +15,7 @@ export function LiveSection({ section }: LiveSectionProps) {
           Ver Todo
         </Link>
       </div>
-      <div className="flex pb-2 overflow-x-auto snap-x snap-mandatory gap-3">
+      <div className="flex pb-2 overflow-x-auto snap-x snap-mandatory gap-3 no-scrollbar">
         {section.items.slice(0, 6).map(item => (
           <LiveShowCard key={item.id} item={item} />
         ))}

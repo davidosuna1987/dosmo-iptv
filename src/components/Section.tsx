@@ -15,7 +15,7 @@ export function Section({ section }: SectionProps) {
           Ver Todo
         </Link>
       </div>
-      <div className="flex pb-2 overflow-x-auto snap-x snap-mandatory gap-3 px-4 md:px-6">
+      <div className="flex pb-2 overflow-x-auto snap-x snap-mandatory gap-3 px-4 md:px-6 no-scrollbar">
         {section.items.slice(0, 6).map(item => (
           <CarouselCard key={item.id} item={item} />
         ))}
