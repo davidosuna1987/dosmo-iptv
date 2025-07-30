@@ -19,10 +19,10 @@ const InfoRow = ({ icon: Icon, label, value, valueColor, showChevron }: { icon: 
       <div className="p-2 bg-secondary rounded-full">
         <Icon className="w-5 h-5 text-primary" />
       </div>
-      <span className="font-medium text-muted-foreground">{label}</span>
+      <span className="font-medium text-foreground">{label}</span>
     </div>
     <div className="flex items-center gap-2">
-      <span className={`font-semibold ${valueColor}`}>{value}</span>
+      <span className={`font-semibold ${valueColor || 'text-muted-foreground'}`}>{value}</span>
       {showChevron && <ChevronRight className="w-5 h-5 text-muted-foreground" />}
     </div>
   </div>
