@@ -9,7 +9,7 @@ export function CarouselCard({ item }: CarouselCardProps) {
   const [width, height] = item.posterPath.split('x').map(Number);
 
   return (
-    <div className="w-[31%] flex-shrink-0 snap-start overflow-hidden group">
+    <div className="w-[31%] md:w-[23.5%] lg:w-[19%] flex-shrink-0 snap-start overflow-hidden group">
       <Image
         src="https://via.assets.so/movie.png?id=1&q=95&w=280&h=410&fit=contain"
         alt={item.title}

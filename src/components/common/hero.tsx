@@ -18,14 +18,25 @@ export function Hero({ item }: HeroProps) {
   const [width, height] = item.posterPath.split('x').map(Number);
 
   return (
-    <div className="flex justify-center">
-      <div className="relative w-full max-w-[280px] h-full rounded-xl overflow-hidden bg-background">
+    <div className="flex justify-center bg-background relative -mt-16 -mx-4 md:-mx-8">
+      <div className='absolute size-full after:content-[""] after:absolute after:inset-0 after:pointer-events-none after:bg-gradient-to-t after:from-black after:to-black/90'> {/*after:bg-background after:opacity-[0.925]*/}
         <Image
           src="https://via.assets.so/movie.png?id=1&q=95&w=280&h=410&fit=contain"
           alt={item.title}
           width={width}
           height={height}
-          className="object-cover w-full h-full"
+          className="object-cover size-full"
+          priority
+          data-ai-hint="movie poster"
+        />
+      </div>
+      <div className="relative w-full max-w-[280px] md:max-w-[400px] lg:max-w-[500px] h-full rounded-xl overflow-hidden pt-16">
+        <Image
+          src="https://via.assets.so/movie.png?id=1&q=95&w=280&h=410&fit=contain"
+          alt={item.title}
+          width={width}
+          height={height}
+          className="object-cover size-full"
           priority
           data-ai-hint="movie poster"
         />

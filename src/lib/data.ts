@@ -42,6 +42,10 @@ const commonItems: Omit<CarouselItem, 'id' | 'title'>[] = [
   { posterPath: '200x300', videoUrl: '#', minutes: 135 },
   { posterPath: '200x300', videoUrl: '#', minutes: 150 },
   { posterPath: '200x300', videoUrl: '#', minutes: 88 },
+  { posterPath: '200x300', videoUrl: '#', minutes: 110 },
+  { posterPath: '200x300', videoUrl: '#', minutes: 125 },
+  { posterPath: '200x300', videoUrl: '#', minutes: 90 },
+  { posterPath: '200x300', videoUrl: '#', minutes: 100 },
 ];
 
 export const homeSections: HomeSection[] = [
@@ -56,6 +60,10 @@ export const homeSections: HomeSection[] = [
       { ...commonItems[3], id: 4, title: 'Ciencia Ficción: Futuro' },
       { ...commonItems[4], id: 5, title: 'Drama Histórico' },
       { ...commonItems[5], id: 6, title: 'Terror en la Noche' },
+      { ...commonItems[6], id: 7, title: 'Aventura en la Jungla' },
+      { ...commonItems[7], id: 8, title: 'Misterio en la Ciudad' },
+      { ...commonItems[8], id: 9, 'title': 'Comedia Romántica' },
+      { ...commonItems[9], id: 10, title: 'Ciencia Ficción: Futuro' },
     ],
   },
   {
@@ -69,10 +77,14 @@ export const homeSections: HomeSection[] = [
       { ...commonItems[3], id: 10, title: 'Viaje a las Estrellas' },
       { ...commonItems[4], id: 11, title: 'El Secreto del Océano' },
       { ...commonItems[5], id: 12, title: 'Leyendas del Deporte' },
+      { ...commonItems[6], id: 13, title: 'Superhéroes Unidos' },
+      { ...commonItems[7], id: 14, title: 'El Gran Escape' },
+      { ...commonItems[8], id: 15, title: 'La Receta Perfecta' },
+      { ...commonItems[9], id: 16, title: 'Viaje a las Estrellas' },
     ],
   },
   {
-    id: 'recently-added',
+    id: 'recently-added-2',
     title: 'Añadidos Recientemente',
     seeAllRoute: '/recently-added',
     items: [
@@ -82,10 +94,14 @@ export const homeSections: HomeSection[] = [
       { ...commonItems[3], id: 4, title: 'Ciencia Ficción: Futuro' },
       { ...commonItems[4], id: 5, title: 'Drama Histórico' },
       { ...commonItems[5], id: 6, title: 'Terror en la Noche' },
+      { ...commonItems[6], id: 7, title: 'Aventura en la Jungla' },
+      { ...commonItems[7], id: 8, title: 'Misterio en la Ciudad' },
+      { ...commonItems[8], id: 9, 'title': 'Comedia Romántica' },
+      { ...commonItems[9], id: 10, title: 'Ciencia Ficción: Futuro' },
     ],
   },
   {
-    id: 'trending',
+    id: 'trending-2',
     title: 'Tendencias',
     seeAllRoute: '/trending',
     items: [
@@ -95,6 +111,10 @@ export const homeSections: HomeSection[] = [
       { ...commonItems[3], id: 10, title: 'Viaje a las Estrellas' },
       { ...commonItems[4], id: 11, title: 'El Secreto del Océano' },
       { ...commonItems[5], id: 12, title: 'Leyendas del Deporte' },
+      { ...commonItems[6], id: 13, title: 'Superhéroes Unidos' },
+      { ...commonItems[7], id: 14, title: 'El Gran Escape' },
+      { ...commonItems[8], id: 15, title: 'La Receta Perfecta' },
+      { ...commonItems[9], id: 16, title: 'Viaje a las Estrellas' },
     ],
   },
 ];
