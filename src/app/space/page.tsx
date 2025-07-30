@@ -1,4 +1,4 @@
-import { MySpace } from '@/components/MySpace';
+import { MySpace } from '@/components/my-space/my-space';
 
 export default function MySpacePage() {
   return (

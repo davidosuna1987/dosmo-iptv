@@ -1,17 +1,19 @@
-import { TopBar } from '@/components/TopBar';
+import { SearchBar } from '@/components/common/navbar/search-bar';
 import { liveSections } from '@/lib/data';
-import { BottomNavBar } from '@/components/BottomNavBar';
-import { LiveSection } from '@/components/LiveSection';
+import { BottomNavBar } from '@/components/common/navbar/bottom-navbar';
+import { LiveSection } from '@/components/live-show/live-show-wrapper';
+import { Main } from '@/components/common/main';
+import { CarouselSection } from '@/components/common/carousel/carousel-section';
 
 export default function LivePage() {
   return (
-    <main className="min-h-screen bg-background text-white px-4 md:px-6">
-    <TopBar />
-    <div className="flex flex-col mt-6 space-y-4">
-        {liveSections.map(section => (
-            <LiveSection key={section.id} section={section} />
-        ))}
-    </div>
-  </main>
+    <Main>
+      <SearchBar />
+      <CarouselSection>
+          {liveSections.map(section => (
+              <LiveSection key={section.id} section={section} />
+          ))}
+      </CarouselSection>
+    </Main>
   );
 }

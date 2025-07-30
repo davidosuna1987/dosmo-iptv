@@ -1,18 +1,20 @@
-import { TopBar } from '@/components/TopBar';
-import { Hero } from '@/components/Hero';
-import { Section } from '@/components/Section';
+import { SearchBar } from '@/components/common/navbar/search-bar';
+import { Hero } from '@/components/common/hero';
+import { CarouselWrapper } from '@/components/common/carousel/carousel-wrapper';
 import { heroItem, homeSections } from '@/lib/data';
+import { Main } from '@/components/common/main';
+import { CarouselSection } from '@/components/common/carousel/carousel-section';
 
 export default function MoviesPage() {
   return (
-    <main className="min-h-screen bg-background text-white px-4 md:px-6">
-      <TopBar />
+    <Main>
+      <SearchBar />
       <Hero item={heroItem} />
-      <div className="flex flex-col mt-6 space-y-4">
+      <CarouselSection>
         {homeSections.map(section => (
-          <Section key={section.id} section={section} />
+          <CarouselWrapper key={section.id} section={section} />
         ))}
-      </div>
-    </main>
+      </CarouselSection>
+    </Main>
   );
 }

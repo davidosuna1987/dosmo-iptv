@@ -1,5 +1,5 @@
 import type {Metadata} from 'next';
-import { BottomNavBar } from '@/components/BottomNavBar';
+import { BottomNavBar } from '@/components/common/navbar/bottom-navbar';
 import './globals.css';
 
 export const metadata: Metadata = {
