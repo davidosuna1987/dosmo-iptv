@@ -14,7 +14,7 @@ export function BottomNavBar() {
   const pathname = usePathname();
   const navItems = [
     { href: '/movies', icon: Clapperboard, label: 'Movies' },
-    { href: '#', icon: Library, label: 'Series' },
+    { href: '/series', icon: Library, label: 'Series' },
     { href: '#', icon: Tv, label: 'Live' },
     { href: '#', icon: BIcon, label: 'My Space' },
   ];
