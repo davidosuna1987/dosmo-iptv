@@ -6,14 +6,12 @@ import { LiveSection } from '@/components/LiveSection';
 export default function LivePage() {
   return (
     <main className="min-h-screen bg-background text-white px-4 md:px-6">
-      <TopBar />
-      <div className="flex flex-col mt-10 space-y-10">
+    <TopBar />
+    <div className="flex flex-col mt-6 space-y-4">
         {liveSections.map(section => (
-          <LiveSection key={section.id} section={section} />
+            <LiveSection key={section.id} section={section} />
         ))}
-      </div>
-      <div className="pb-24" />
-      <BottomNavBar />
-    </main>
+    </div>
+  </main>
   );
 }

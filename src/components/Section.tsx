@@ -1,6 +1,6 @@
 import type { HomeSection } from '@/lib/data';
 import { CarouselCard } from './CarouselCard';
-import Link from 'next/link';
+import { CategoryHeader } from './CategoryHeader';
 
 interface SectionProps {
   section: HomeSection;
@@ -9,12 +9,7 @@ interface SectionProps {
 export function Section({ section }: SectionProps) {
   return (
     <div className="space-y-2">
-      <div className="flex items-baseline justify-between mb-2">
-        <h2 className="text-xl font-semibold">{section.title}</h2>
-        <Link href={section.seeAllRoute} className="text-xs font-semibold tracking-wide uppercase text-primary hover:underline">
-          Ver Todo
-        </Link>
-      </div>
+      <CategoryHeader title={section.title} href={section.seeAllRoute} />
       <div className="flex pb-2 overflow-x-auto snap-x snap-mandatory gap-3 px-4 md:px-6 no-scrollbar">
         {section.items.slice(0, 6).map(item => (
           <CarouselCard key={item.id} item={item} />

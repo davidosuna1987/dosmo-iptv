@@ -11,7 +11,7 @@ export function CarouselCard({ item }: CarouselCardProps) {
   return (
     <div className="w-[31%] flex-shrink-0 snap-start overflow-hidden group">
       <Image
-        src={`https://placehold.co/${item.posterPath}.png`}
+        src="https://via.assets.so/movie.png?id=1&q=95&w=280&h=410&fit=contain"
         alt={item.title}
         width={width}
         height={height}
