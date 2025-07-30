@@ -15,8 +15,8 @@ export function LiveSection({ section }: LiveSectionProps) {
           Ver Todo
         </Link>
       </div>
-      <div className="grid grid-cols-2 gap-4">
-        {section.items.map(item => (
+      <div className="flex pb-2 overflow-x-auto snap-x snap-mandatory gap-3">
+        {section.items.slice(0, 6).map(item => (
           <LiveShowCard key={item.id} item={item} />
         ))}
       </div>

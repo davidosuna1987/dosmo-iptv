@@ -79,6 +79,8 @@ const commonLiveItems: Omit<LiveShowItem, 'id' | 'title'>[] = [
   { posterPath: '120x80' },
   { posterPath: '120x80' },
   { posterPath: '120x80' },
+  { posterPath: '120x80' },
+  { posterPath: '120x80' },
 ];
 
 export const liveSections: LiveSection[] = [
@@ -89,6 +91,10 @@ export const liveSections: LiveSection[] = [
     items: [
       { ...commonLiveItems[0], id: 201, title: 'M+: La 1 RAW' },
       { ...commonLiveItems[1], id: 202, title: 'M+: La 2 RAW' },
+      { ...commonLiveItems[2], id: 203, title: 'M+: La 3 RAW' },
+      { ...commonLiveItems[3], id: 204, title: 'M+: La 4 RAW' },
+      { ...commonLiveItems[4], id: 205, title: 'M+: La 5 RAW' },
+      { ...commonLiveItems[5], id: 206, title: 'M+: La 6 RAW' },
     ],
   },
   {
@@ -96,8 +102,12 @@ export const liveSections: LiveSection[] = [
     title: 'ES | TIVIFY HD',
     seeAllRoute: '/live/tivify-hd',
     items: [
-      { ...commonLiveItems[0], id: 203, title: 'ES: LA 2 HD' },
-      { ...commonLiveItems[1], id: 204, title: 'ES: LA SEXTA HD' },
+      { ...commonLiveItems[0], id: 207, title: 'ES: LA 2 HD' },
+      { ...commonLiveItems[1], id: 208, title: 'ES: LA SEXTA HD' },
+      { ...commonLiveItems[2], id: 209, title: 'ES: ANTENA 3 HD' },
+      { ...commonLiveItems[3], id: 210, title: 'ES: TELECINCO HD' },
+      { ...commonLiveItems[4], id: 211, title: 'ES: CUATRO HD' },
+      { ...commonLiveItems[5], id: 212, title: 'ES: NEOX HD' },
     ],
   },
   {
@@ -105,8 +115,12 @@ export const liveSections: LiveSection[] = [
     title: 'ES | TIVIFY GOLD',
     seeAllRoute: '/live/tivify-gold',
     items: [
-      { ...commonLiveItems[0], id: 205, title: 'TY: CANAL MÁLAGA RAW' },
-      { ...commonLiveItems[1], id: 206, title: 'TY: CANAL PARLAMENTO RAW' },
+      { ...commonLiveItems[0], id: 213, title: 'TY: CANAL MÁLAGA RAW' },
+      { ...commonLiveItems[1], id: 214, title: 'TY: CANAL PARLAMENTO RAW' },
+      { ...commonLiveItems[2], id: 215, title: 'TY: CANAL SUR RAW' },
+      { ...commonLiveItems[3], id: 216, title: 'TY: CANAL DEPORTES RAW' },
+      { ...commonLiveItems[4], id: 217, title: 'TY: CANAL COCINA RAW' },
+      { ...commonLiveItems[5], id: 218, title: 'TY: CANAL VIAJAR RAW' },
     ],
   },
 ];
