@@ -16,7 +16,7 @@ export function BottomNavBar() {
     { href: '/movies', icon: Clapperboard, label: 'Movies' },
     { href: '/series', icon: Library, label: 'Series' },
     { href: '/live', icon: Tv, label: 'Live' },
-    { href: '#', icon: BIcon, label: 'My Space' },
+    { href: '/space', icon: BIcon, label: 'My Space' },
   ];
 
   return (
