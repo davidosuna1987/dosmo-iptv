@@ -15,7 +15,7 @@ export function CarouselCard({ item }: CarouselCardProps) {
         alt={item.title}
         width={width}
         height={height}
-        className="object-cover w-full rounded-md aspect-[2/3] group-hover:scale-110"
+        className="object-cover w-full rounded-md aspect-[2/3] group-hover:scale-110 transition-transform duration-200"
         data-ai-hint="movie poster"
       />
     </div>

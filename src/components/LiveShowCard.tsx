@@ -6,20 +6,19 @@ interface LiveShowCardProps {
 }
 
 export function LiveShowCard({ item }: LiveShowCardProps) {
-  const [width, height] = item.posterPath.split('x').map(Number);
   return (
-    <div className="w-[30%] flex-shrink-0 snap-start flex flex-col gap-2 group">
-      <div className="aspect-video bg-card rounded-lg flex items-center justify-center overflow-hidden">
+    <div className="w-[30%] bg-secondary flex-shrink-0 snap-start flex flex-col gap-2 group rounded-lg overflow-hidden">
+      <div className="aspect-square flex items-center justify-center overflow-hidden bg-primary">
         <Image
           src={`https://placehold.co/${item.posterPath}.png`}
           alt={item.title}
-          width={width}
-          height={height}
-          className="object-contain w-3/4 h-3/4 group-hover:scale-110 transition-transform duration-300"
+          width={300}
+          height={300}
+          className="object-contain size-full group-hover:scale-110 transition-transform duration-200"
           data-ai-hint="channel logo"
         />
       </div>
-      <p className="text-center text-xs text-muted-foreground font-semibold truncate">{item.title}</p>
+      <p className="text-center text-xs text-muted-foreground font-semibold truncate mt-2 mb-3">{item.title}</p>
     </div>
   );
 }
