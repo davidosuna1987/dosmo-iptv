@@ -1,5 +1,7 @@
+"use client"
 import Link from 'next/link';
 import { Clapperboard, Library, Tv } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 const BIcon = ({ className }: { className?: string }) => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
@@ -9,24 +11,28 @@ const BIcon = ({ className }: { className?: string }) => (
 )
 
 export function BottomNavBar() {
+  const pathname = usePathname();
   const navItems = [
-    { href: '/', icon: Clapperboard, label: 'Movies', active: true },
-    { href: '#', icon: Library, label: 'Series', active: false },
-    { href: '#', icon: Tv, label: 'Live', active: false },
-    { href: '#', icon: BIcon, label: 'My Space', active: false },
+    { href: '/movies', icon: Clapperboard, label: 'Movies' },
+    { href: '#', icon: Library, label: 'Series' },
+    { href: '#', icon: Tv, label: 'Live' },
+    { href: '#', icon: BIcon, label: 'My Space' },
   ];
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm border-t border-border z-50">
       <div className="flex justify-around items-center h-16 text-xs">
-        {navItems.map((item) => (
-          <Link href={item.href} key={item.label}>
-            <div className={`flex flex-col items-center gap-1 ${item.active ? 'text-primary' : 'text-gray-400'}`}>
-              <item.icon className={`h-6 w-6 ${item.label === 'My Space' && !item.active ? 'text-green-500' : ''}`} />
-              <span>{item.label}</span>
-            </div>
-          </Link>
-        ))}
+        {navItems.map((item) => {
+          const active = pathname === item.href;
+          return (
+            <Link href={item.href} key={item.label}>
+              <div className={`flex flex-col items-center gap-1 ${active ? 'text-primary' : 'text-gray-400'}`}>
+                <item.icon className={`h-6 w-6 ${item.label === 'My Space' && !active ? 'text-green-500' : ''}`} />
+                <span>{item.label}</span>
+              </div>
+            </Link>
+          )
+        })}
       </div>
     </div>
   );
