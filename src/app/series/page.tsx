@@ -8,7 +8,7 @@ import { CarouselSection } from '@/components/common/carousel/carousel-section';
 export default function SeriesPage() {
   return (
     <Main>
-      <TopNavbar />
+      <TopNavbar searchLink='/series/list' />
       <Hero item={heroItem} />
       <CarouselSection>
         {homeSections.map(section => (
