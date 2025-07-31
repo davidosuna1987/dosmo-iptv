@@ -50,7 +50,7 @@ export function BottomSheet({
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="bottom" className="rounded-t-lg">
+      <SheetContent side="bottom" className="rounded-t-2xl max-w-[600px] mx-auto">
         <SheetHeader className="text-left">
           <SheetTitle>{title}</SheetTitle>
         </SheetHeader>
