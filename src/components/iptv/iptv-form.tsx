@@ -18,12 +18,15 @@ export function IptvForm() {
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
     // Basic URL validation using a regular expression
-    const urlPattern = new RegExp('^(https?://)?' + // protocol
-    '((([a-zd]([a-zd-]*[a-zd])*).)+[a-z]{2,}|' + // domain name
-    '((d{1,3}.){3}d{1,3}))' + // OR ip (v4) address
-    '(\:d+)?(/[-a-zd%_.~+]*)*' + // port and path
-    '(\?[;&a-zd%_.~+=-]*)' + // query string
-    '(#[-a-zd_]*)$/i'); // fragment locator
+    const urlPattern = new RegExp(
+      '^(https?://)?' + // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+      '(\\#[-a-z\\d_]*)?$', // fragment locator
+      'i'
+    );
 
     if (!urlPattern.test(url)) {
       setUrlError('Por favor, introduce una URL válida.');
