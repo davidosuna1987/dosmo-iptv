@@ -16,9 +16,7 @@ import { MySpaceInfoRowWrapper } from './my-space-info-row-wrapper';
 
 export function MySpace() {
   return (
-    <div className="max-w-[500px] mx-auto flex flex-col gap-4 mt-4 text-sm">
-      <h2 className="text-xl font-bold text-center">My Space</h2>
-
+    <div className="max-w-[500px] mx-auto flex flex-col gap-4 text-sm">
       <MySpaceInfoRowWrapper>
         <MySpaceInfoRow icon={Clapperboard} label="Movies" value="80227" />
         <MySpaceInfoRow icon={Library} label="Series" value="17419" />
