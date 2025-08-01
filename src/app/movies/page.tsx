@@ -24,6 +24,8 @@ export default function MoviesPage() {
         if (client) {
           const categories = await client.getVodCategoriesWithContent();
           setMoviesCategories(categories);
+
+          console.log({categories})
         }
       }
       setIsLoading(false);
@@ -36,6 +38,7 @@ export default function MoviesPage() {
     <Main>
       <TopNavbar searchLink="/movies/list" />
       <Hero item={heroItem} />
+      <pre>{JSON.stringify(moviesCategories, null, 2)}</pre>
       <CarouselSection>
         {homeSections.map(section => (
           <CarouselWrapper key={section.id} section={section} />
