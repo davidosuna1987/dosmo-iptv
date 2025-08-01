@@ -8,20 +8,35 @@ export interface XtreamCredentials {
     listName: string;
     serverUrl: string;
     username: string;
-    encryptedPassword: EncryptedPassword;
-  }
+    password?: string;
+    encryptedPassword?: EncryptedPassword;
+}
   
-  export interface ContentItem {
+export interface ContentItem {
     id: string;
     title: string;
     image: string;
     description?: string;
     isAdult?: boolean;
     data_ai_hint?: string;
-    streamType: "movie" | "series";
-  }
+    streamType: "movie" | "series" | "live";
+}
+
+export interface UserInfo {
+    username: string;
+    password?: string;
+    message: string;
+    auth: number;
+    status: string;
+    exp_date: string;
+    is_trial: string;
+    active_cons: string;
+    created_at: string;
+    max_connections: string;
+    allowed_output_formats: string[];
+}
   
-  export interface XtreamVodStreamInfo {
+export interface XtreamVodStream {
     num: number;
     name: string;
     stream_type: "movie";
@@ -29,35 +44,33 @@ export interface XtreamCredentials {
     stream_icon: string;
     rating: string | null;
     rating_5based: number;
-    trailer: string;
     added: string;
     is_adult: number;
     category_id: string;
-    category_ids: number[];
     container_extension: string;
     custom_sid: string | null;
     direct_source: string;
-  }
+}
   
-  export interface XtreamVodCategory {
+export interface XtreamVodCategory {
     category_id: string;
     category_name: string;
     parent_id: number;
-  }
+}
   
-  export interface XtreamLiveCategory {
+export interface XtreamLiveCategory {
     category_id: string;
     category_name: string;
     parent_id: number;
-  }
+}
   
-  export interface XtreamSeriesCategory {
+export interface XtreamSeriesCategory {
     category_id: string;
     category_name: string;
     parent_id: number;
-  }
+}
   
-  export interface XtreamSeriesInfo {
+export interface XtreamSeriesInfo {
     num: number;
     name: string;
     series_id: number;
@@ -67,19 +80,16 @@ export interface XtreamCredentials {
     director: string | null;
     genre: string | null;
     releaseDate: string | null;
-    release_date: string | null;
     last_modified: string;
     rating: string | null;
     rating_5based: number;
     backdrop_path: string[];
     youtube_trailer: string;
-    tmdb: string | null;
     episode_run_time: string;
     category_id: string;
-    category_ids: number[];
-  }
+}
   
-  export interface XtreamMovieData {
+export interface XtreamMovieData {
     stream_id: number;
     name: string;
     added: string;
@@ -98,8 +108,8 @@ export interface XtreamCredentials {
     duration_secs: number;
     duration: string;
     backdrop_path: string[];
-  }
-  export interface XtreamMovieInfo {
+}
+export interface XtreamMovieInfo {
     kinopoisk_url: string;
     tmdb_id: string;
     name: string;
@@ -123,38 +133,38 @@ export interface XtreamCredentials {
     duration_secs: number;
     duration: string;
     rating: number;
-  }
-  export interface XtreamVodInfoResponse {
+}
+export interface XtreamVodInfoResponse {
     info: XtreamMovieInfo;
     movie_data: XtreamMovieData;
-  }
+}
   
-  export interface XtreamEpisode {
+export interface XtreamEpisode {
     id: string;
     episode_num: number;
     title: string;
     container_extension: string;
     info: {
-      tmdb_id: string;
-      releasedate: string;
-      plot: string;
-      duration_secs: number;
-      duration: string;
-      movie_image: string;
-      video: Record<string, unknown>;
-      audio: Record<string, unknown>;
-      bitrate: number;
-      rating: number;
-      name: string;
-      season: number;
+        tmdb_id: string;
+        releasedate: string;
+        plot: string;
+        duration_secs: number;
+        duration: string;
+        movie_image: string;
+        video: Record<string, unknown>;
+        audio: Record<string, unknown>;
+        bitrate: number;
+        rating: number;
+        name: string;
+        season: number;
     };
     custom_sid: string;
     added: string;
     season: number;
     direct_source: string;
-  }
+}
   
-  export interface XtreamSeason {
+export interface XtreamSeason {
     air_date: string;
     episode_count: number;
     id: number;
@@ -163,17 +173,17 @@ export interface XtreamCredentials {
     season_number: number;
     cover: string;
     cover_big: string;
-  }
+}
   
-  export interface XtreamSeriesDetailResponse {
+export interface XtreamSeriesDetailResponse {
     info: XtreamSeriesInfo;
     episodes: {
-      [season_number: string]: XtreamEpisode[];
+        [season_number: string]: XtreamEpisode[];
     };
     seasons: XtreamSeason[];
-  }
+}
   
-  export interface XtreamLiveStream {
+export interface XtreamLiveStream {
     num: number;
     name: string;
     stream_type: 'live';
@@ -186,4 +196,4 @@ export interface XtreamCredentials {
     tv_archive: number;
     direct_source: string;
     tv_archive_duration: number;
-  }
+}
