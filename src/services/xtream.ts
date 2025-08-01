@@ -1,3 +1,4 @@
+
 import type {
   XtreamCredentials,
   XtreamLiveCategory,
@@ -29,8 +30,11 @@ export class XtreamClient {
 
   private async fetchAPI<T>(action: string, params: Record<string, string> = {}): Promise<T> {
     const url = new URL(this.baseUrl);
+    url.pathname = '/player_api.php';
     url.searchParams.set('username', this.credentials.username);
-    url.searchParams.set('password', this.credentials.password);
+    if (this.credentials.password) {
+      url.searchParams.set('password', this.credentials.password);
+    }
     url.searchParams.set('action', action);
     for (const key in params) {
       url.searchParams.set(key, params[key]);
@@ -40,7 +44,13 @@ export class XtreamClient {
     if (!response.ok) {
         throw new Error(`API call failed: ${response.statusText}`);
     }
-    return response.json();
+
+    const text = await response.text();
+    if (!text) {
+      // Handle empty but successful responses
+      return [] as T;
+    }
+    return JSON.parse(text);
   }
 
   async getUserInfo(): Promise<XtreamUserInfo> {
