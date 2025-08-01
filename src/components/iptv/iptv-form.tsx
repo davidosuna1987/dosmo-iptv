@@ -9,8 +9,10 @@ import { useState } from 'react';
 import { BottomSheet } from "@/components/ui/bottom-sheet";
 import { useXtreamCredentials } from "@/hooks/use-xtream-credentials";
 import { useEncryptedPassword } from "@/hooks/use-encrypted-password";
+import { useRouter } from "next/navigation";
 
 export function IptvForm() {
+  const router = useRouter();
   const { encrypt } = useEncryptedPassword();
   const { saveCredentials, isLoading } = useXtreamCredentials();
   const [listName, setListName] = useState('');
@@ -30,7 +32,8 @@ export function IptvForm() {
       serverUrl: url,
       username,
       encryptedPassword,
-    })
+    });
+    router.push('/movies');
   }
 
   const handleSend = (e: React.FormEvent) => {
