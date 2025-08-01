@@ -21,7 +21,7 @@ export interface XtreamCredentials {
     streamType: "movie" | "series";
   }
   
-  export interface XtreamVodStream {
+  export interface XtreamVodStreamInfo {
     num: number;
     name: string;
     stream_type: "movie";
@@ -29,8 +29,11 @@ export interface XtreamCredentials {
     stream_icon: string;
     rating: string | null;
     rating_5based: number;
+    trailer: string;
     added: string;
+    is_adult: number;
     category_id: string;
+    category_ids: number[];
     container_extension: string;
     custom_sid: string | null;
     direct_source: string;
@@ -64,13 +67,16 @@ export interface XtreamCredentials {
     director: string | null;
     genre: string | null;
     releaseDate: string | null;
+    release_date: string | null;
     last_modified: string;
     rating: string | null;
     rating_5based: number;
     backdrop_path: string[];
     youtube_trailer: string;
+    tmdb: string | null;
     episode_run_time: string;
     category_id: string;
+    category_ids: number[];
   }
   
   export interface XtreamMovieData {
