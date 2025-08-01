@@ -1,6 +1,6 @@
 import { ChevronRight } from "lucide-react";
 
-export const MySpaceInfoRow = ({ icon: Icon, label, value, valueColor, showChevron }: { icon: React.ElementType, label: string, value: string, valueColor?: string, showChevron?: boolean }) => (
+export const ProfileInfoRow = ({ icon: Icon, label, value, valueColor, showChevron }: { icon: React.ElementType, label: string, value: string, valueColor?: string, showChevron?: boolean }) => (
     <div className="flex items-center justify-between py-2 border-b border-border/50 last:border-b-0 text-sm">
       <div className="flex items-center gap-3">
         <div className="p-2 bg-secondary rounded-full">

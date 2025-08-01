@@ -1,4 +1,4 @@
-export function MySpaceInfoRowWrapper({
+export function ProfileInfoRowWrapper({
     children,
   }: Readonly<{
     children: React.ReactNode;
