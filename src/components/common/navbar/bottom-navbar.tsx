@@ -10,7 +10,7 @@ export function BottomNavBar() {
     { href: '/movies', icon: Clapperboard, label: 'Películas' },
     { href: '/series', icon: Library, label: 'Series' },
     { href: '/live', icon: Tv, label: 'Live' },
-    { href: '/space', icon: DosmoIptvLogo, label: 'Perfil' },
+    { href: '/profile', icon: DosmoIptvLogo, label: 'Perfil' },
   ];
 
   return (
