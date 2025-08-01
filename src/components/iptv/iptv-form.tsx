@@ -7,8 +7,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from 'react';
 import { BottomSheet } from "@/components/ui/bottom-sheet";
+import { useXtreamCredentials } from "@/hooks/use-xtream-credentials";
+import { useEncryptedPassword } from "@/hooks/use-encrypted-password";
 
 export function IptvForm() {
+  const { encrypt } = useEncryptedPassword();
+  const { saveCredentials } = useXtreamCredentials();
   const [listName, setListName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -18,9 +22,15 @@ export function IptvForm() {
 
   const isFormValid = listName && username && password && url;
 
-  const processForm = () => {
-    // Process form data here (e.g., send to an API)
-    console.log('Formulario enviado', { listName, username, password, url });
+  const processForm = async () => {
+    const encryptedPassword = await encrypt(password);
+
+    saveCredentials({
+      listName,
+      serverUrl: url,
+      username,
+      encryptedPassword,
+    })
   }
 
   const handleSend = (e: React.FormEvent) => {
@@ -53,13 +63,13 @@ export function IptvForm() {
     setUrl(url.replace('https://', 'http://'));
     setIsSheetOpen(false);
     // We need to defer processing to allow state to update
-    setTimeout(processForm, 0);
+    setTimeout(processForm, 10);
   };
 
   const handleUrlProtocolKeep = () => {
     setIsSheetOpen(false);
     // We need to defer processing to allow state to update
-    setTimeout(processForm, 0);
+    setTimeout(processForm, 10);
   }
 
   return (
@@ -87,6 +97,7 @@ export function IptvForm() {
         </div>
         <Button type="submit" className="w-full" disabled={!isFormValid}>Agregar Lista</Button>
       </form>
+
       <BottomSheet
         open={isSheetOpen}
         onOpenChange={setIsSheetOpen}
