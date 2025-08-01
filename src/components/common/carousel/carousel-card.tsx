@@ -14,7 +14,7 @@ export function CarouselCard({ item }: CarouselCardProps) {
   return (
     <div className="w-[31%] md:w-[23.5%] lg:w-[18.5%] flex-shrink-0 snap-start overflow-hidden group">
       <Image
-        src={item.posterPath || "https://via.assets.so/movie.png?id=1&q=95&w=280&h=410&fit=contain"}
+        src={"https://via.assets.so/movie.png?id=1&q=95&w=280&h=410&fit=contain"}
         alt={item.title}
         width={width}
         height={height}

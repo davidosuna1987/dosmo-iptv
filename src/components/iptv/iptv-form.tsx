@@ -19,7 +19,6 @@ export function IptvForm() {
   const [url, setUrl] = useState('');
   const [urlError, setUrlError] = useState<string | null>(null);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const router = useRouter();
 
   const isFormValid = listName && username && password && url;
 
@@ -56,7 +55,7 @@ export function IptvForm() {
     if (url.startsWith('https://')) {
       setIsSheetOpen(true);
     } else {
-      saveCredentials();
+      processForm();
     }
   };
 
