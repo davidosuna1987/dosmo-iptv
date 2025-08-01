@@ -12,7 +12,7 @@ import { useEncryptedPassword } from "@/hooks/use-encrypted-password";
 
 export function IptvForm() {
   const { encrypt } = useEncryptedPassword();
-  const { saveCredentials } = useXtreamCredentials();
+  const { saveCredentials, isLoading } = useXtreamCredentials();
   const [listName, setListName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -78,24 +78,24 @@ export function IptvForm() {
         <DosmoIptvLogo iptv className="max-w-[250px] mb-4" />
         <div className="grid w-full max-w-sm items-center gap-1.5">
           <Label htmlFor="list-name">Nombre de la lista</Label>
-          <Input type="text" id="list-name" placeholder="Nombre de la lista" value={listName} onChange={(e) => setListName(e.target.value)} />
+          <Input type="text" id="list-name" placeholder="Nombre de la lista" value={listName} onChange={(e) => setListName(e.target.value)} disabled={isLoading} />
         </div>
         <div className="grid w-full max-w-sm items-center gap-1.5">
           <Label htmlFor="username">Usuario</Label>
-          <Input type="text" id="username" placeholder="Usuario" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <Input type="text" id="username" placeholder="Usuario" value={username} onChange={(e) => setUsername(e.target.value)} disabled={isLoading} />
         </div>
         <div className="grid w-full max-w-sm items-center gap-1.5">
           <Label htmlFor="password">Contraseña</Label>
-          <Input type="password" id="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <Input type="password" id="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} disabled={isLoading} />
         </div>
         <div className="grid w-full max-w-sm items-center gap-1.5">
           <div className="flex items-end gap-2">
             <Label htmlFor="url">URL</Label>
             {urlError && <span className="text-primary text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">{urlError}</span>}
           </div>
-          <Input type="text" id="url" placeholder="URL" value={url} onChange={(e) => setUrl(e.target.value)} />
+          <Input type="text" id="url" placeholder="URL" value={url} onChange={(e) => setUrl(e.target.value)} disabled={isLoading} />
         </div>
-        <Button type="submit" className="w-full" disabled={!isFormValid}>Agregar Lista</Button>
+        <Button type="submit" className="w-full" disabled={!isFormValid} loading={isLoading}>Agregar Lista</Button>
       </form>
 
       <BottomSheet
