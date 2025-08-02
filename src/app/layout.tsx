@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
-import { BottomNavBar } from '@/components/common/navbar/bottom-navbar';
 import './globals.css';
+import { AuthGuard } from '@/components/auth-guard';
 
 export const metadata: Metadata = {
   title: 'DOSMO IPTV',
@@ -20,8 +20,9 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased pb-20">
-        {children}
-        <BottomNavBar />
+        <AuthGuard>
+          {children}
+        </AuthGuard>
       </body>
     </html>
   );

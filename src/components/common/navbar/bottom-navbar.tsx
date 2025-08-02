@@ -3,9 +3,11 @@ import Link from 'next/link';
 import { Clapperboard, Library, Tv } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { DosmoIptvLogo } from '../dosmo-iptv-logo';
+import { useXtreamCredentials } from '@/hooks/use-xtream-credentials';
 
 export function BottomNavBar() {
   const pathname = usePathname();
+  const { credentials, isLoading } = useXtreamCredentials();
   const navItems = [
     { href: '/movies', icon: Clapperboard, label: 'Películas' },
     { href: '/series', icon: Library, label: 'Series' },
@@ -13,11 +15,15 @@ export function BottomNavBar() {
     { href: '/profile', icon: DosmoIptvLogo, label: 'Perfil' },
   ];
 
+  if (isLoading || !credentials) {
+    return null;
+  }
+
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm border-t border-border z-50">
       <div className="flex justify-around items-center h-16 text-xs">
         {navItems.map((item) => {
-          const active = pathname === item.href;
+          const active = pathname.startsWith(item.href);
           return (
             <Link href={item.href} key={item.label}>
               <div className={`flex flex-col items-center gap-1 ${active ? 'text-primary' : 'text-gray-400 hover:text-white'}`}>
