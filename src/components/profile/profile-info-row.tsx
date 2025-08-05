@@ -1,7 +1,32 @@
 import { ChevronRight } from "lucide-react";
+import React from "react";
 
-export const ProfileInfoRow = ({ icon: Icon, label, value, valueColor, showChevron }: { icon: React.ElementType, label: string, value: string, valueColor?: string, showChevron?: boolean }) => (
-    <div className="flex items-center justify-between py-2 border-b border-border/50 last:border-b-0 text-sm">
+type ProfileInfoRowProps = {
+  icon: React.ElementType;
+  label: string;
+  value: string;
+  valueColor?: string;
+  showChevron?: boolean;
+  href?: string;
+  onClick?: () => void;
+};
+
+export const ProfileInfoRow = ({
+  icon: Icon,
+  label,
+  value,
+  valueColor,
+  showChevron,
+  href,
+  onClick,
+}: ProfileInfoRowProps) => {
+  const Component = (
+    <div
+      className={`flex items-center justify-between py-2 border-b border-border/50 last:border-b-0 text-sm ${
+        onClick ? "cursor-pointer" : ""
+      }`}
+      onClick={onClick}
+    >
       <div className="flex items-center gap-3">
         <div className="p-2 bg-secondary rounded-full">
           <Icon className="w-5 h-5 text-primary" />
@@ -9,8 +34,28 @@ export const ProfileInfoRow = ({ icon: Icon, label, value, valueColor, showChevr
         <span className="font-medium text-foreground">{label}</span>
       </div>
       <div className="flex items-center gap-2">
-        <span className={`font-semibold ${valueColor || 'text-muted-foreground'}`}>{value}</span>
-        {showChevron && <ChevronRight className="w-5 h-5 text-muted-foreground" />}
+        <span
+          className={`font-semibold ${
+            valueColor || "text-muted-foreground"
+          }`}
+        >
+          {value}
+        </span>
+        {showChevron && (
+          <ChevronRight className="w-5 h-5 text-muted-foreground" />
+        )}
       </div>
     </div>
   );
+
+  // Si hay href, envolver en <a>
+  if (href) {
+    return (
+      <a href={href} className="block">
+        {Component}
+      </a>
+    );
+  }
+
+  return Component;
+};

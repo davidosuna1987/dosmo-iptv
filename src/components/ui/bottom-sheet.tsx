@@ -54,7 +54,7 @@ export function BottomSheet({
         <SheetHeader className="text-left">
           <SheetTitle>{title}</SheetTitle>
         </SheetHeader>
-        <div className="py-4">{content}</div>
+        <div className="mt-4 mb-10">{content}</div>
         <SheetFooter>
           <div className="flex w-full flex-col-reverse sm:flex-row gap-2">
               <Button variant="secondary" onClick={handleCancel} className="w-full">

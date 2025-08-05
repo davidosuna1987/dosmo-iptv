@@ -40,10 +40,12 @@ export interface ButtonProps
   asChild?: boolean
   loading?: boolean
   disabled?: boolean
+  spinnerSize?: number
+  spinnerBorderWidth?: number
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, loading, disabled, children, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, loading, disabled, spinnerSize = 20, spinnerBorderWidth = 2, children, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
     return (
       <Comp
@@ -52,7 +54,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled}
         {...props}
       >
-        {loading ? <Spinner size="6" text={variant ? undefined : 'white'} /> : children}
+        {loading ? <Spinner size={spinnerSize} border={spinnerBorderWidth} color={variant ? undefined : 'white'} /> : children}
       </Comp>
     )
   }

@@ -1,28 +1,30 @@
+export type WithRating = { 
+    rating?: number | string | null;
+    rating_5based?: number | string | null
+};
 
-export interface EncryptedPassword {
+export type EncryptedPassword = {
     iv: number[];
     data: number[];
 }
 
-export interface XtreamCredentials {
+export type XtreamCredentials = {
     listName: string;
     serverUrl: string;
     username: string;
     password?: string;
     encryptedPassword?: EncryptedPassword;
 }
-  
-export interface ContentItem {
-    id: string;
-    title: string;
-    image: string;
-    description?: string;
-    isAdult?: boolean;
-    data_ai_hint?: string;
-    streamType: "movie" | "series" | "live";
-}
 
-export interface UserInfo {
+export const XTREAM_MEDIA_TYPES = {
+    movies: "movies",
+    series: "series",
+    live: "live",
+} as const
+
+export type XtreamMediaType = keyof typeof XTREAM_MEDIA_TYPES
+
+export type UserInfo = {
     username: string;
     password?: string;
     message: string;
@@ -35,8 +37,44 @@ export interface UserInfo {
     max_connections: string;
     allowed_output_formats: string[];
 }
+
+export type ServerInfo = {
+    url: string;
+    port: string;
+    https_port: string;
+    server_protocol: string;
+    rtmp_port: string;
+    timezone: string;
+    timestamp_now: number;
+    time_now: string;
+    process: boolean;
+}
+
+export type XtreamInfo = {
+    moviesCount: number;
+    seriesCount: number;
+    liveCount: number;
+}
+
+export type ProfileInfo = {
+    user_info: UserInfo;
+    server_info: ServerInfo;
+}
+
+export type ProfileDetails = XtreamInfo & {
+    listName: string;
+    username: string;
+    serverUrl: string;
+    timeZone: string;
+    daysLeft: string;
+    startDate: string;
+    endDate: string;
+    maxConnections: string;
+    appVersion: string;
+    status: string;
+}
   
-export interface XtreamVodStream {
+export type XtreamVodStream = {
     num: number;
     name: string;
     stream_type: "movie";
@@ -51,26 +89,45 @@ export interface XtreamVodStream {
     custom_sid: string | null;
     direct_source: string;
 }
-  
-export interface XtreamVodCategory {
+
+export type XtreamPreview = {
+    num: number,
+    name: string,
+    cover: string,
+    cover_big?: string,
+    rating?: number | string | null,
+    rating_5based?: number | string | null,
+}
+
+export type XtreamCategoryWithPreview = {
     category_id: string;
     category_name: string;
     parent_id: number;
+    preview: XtreamPreview[];
 }
   
-export interface XtreamLiveCategory {
+export type XtreamVodCategory = {
     category_id: string;
     category_name: string;
     parent_id: number;
+    preview: XtreamVodStream[];
 }
   
-export interface XtreamSeriesCategory {
+export type XtreamLiveCategory = {
     category_id: string;
     category_name: string;
     parent_id: number;
+    preview: XtreamLiveStream[];
 }
   
-export interface XtreamSeriesInfo {
+export type XtreamSeriesCategory = {
+    category_id: string;
+    category_name: string;
+    parent_id: number;
+    preview: XtreamSeriesInfo[];
+}
+  
+export type XtreamSeriesInfo = {
     num: number;
     name: string;
     series_id: number;
@@ -89,7 +146,7 @@ export interface XtreamSeriesInfo {
     category_id: string;
 }
   
-export interface XtreamMovieData {
+export type XtreamMovieData = {
     stream_id: number;
     name: string;
     added: string;
@@ -109,7 +166,7 @@ export interface XtreamMovieData {
     duration: string;
     backdrop_path: string[];
 }
-export interface XtreamMovieInfo {
+export type XtreamMovieInfo = {
     kinopoisk_url: string;
     tmdb_id: string;
     name: string;
@@ -134,12 +191,12 @@ export interface XtreamMovieInfo {
     duration: string;
     rating: number;
 }
-export interface XtreamVodInfoResponse {
+export type XtreamVodInfoResponse = {
     info: XtreamMovieInfo;
     movie_data: XtreamMovieData;
 }
   
-export interface XtreamEpisode {
+export type XtreamEpisode = {
     id: string;
     episode_num: number;
     title: string;
@@ -164,7 +221,7 @@ export interface XtreamEpisode {
     direct_source: string;
 }
   
-export interface XtreamSeason {
+export type XtreamSeason = {
     air_date: string;
     episode_count: number;
     id: number;
@@ -175,7 +232,7 @@ export interface XtreamSeason {
     cover_big: string;
 }
   
-export interface XtreamSeriesDetailResponse {
+export type XtreamSeriesDetailResponse = {
     info: XtreamSeriesInfo;
     episodes: {
         [season_number: string]: XtreamEpisode[];
@@ -183,7 +240,7 @@ export interface XtreamSeriesDetailResponse {
     seasons: XtreamSeason[];
 }
   
-export interface XtreamLiveStream {
+export type XtreamLiveStream = {
     num: number;
     name: string;
     stream_type: 'live';

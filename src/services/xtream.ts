@@ -9,7 +9,9 @@ import type {
     XtreamVodCategory,
     XtreamVodInfoResponse,
     XtreamVodStream,
-    UserInfo
+    UserInfo,
+    ProfileInfo,
+    ServerInfo
 } from '@/types';
 import { useEncryptedPassword } from '@/hooks/use-encrypted-password';
 
@@ -51,9 +53,9 @@ export class XtreamClient {
         }
     }
     
-    async getProfileInfo(): Promise<UserInfo | null> {
-        const response = await this.fetchAPI<{ user_info: UserInfo, server_info: any }>({ action: 'get_user_info' });
-        return response ? response.user_info : null;
+    async getProfileInfo(): Promise<ProfileInfo | null> {
+        const response = await this.fetchAPI<{ user_info: UserInfo, server_info: ServerInfo }>({ action: 'get_user_info' });
+        return response ?? null;
     }
 
     async getVodStreams(categoryId?: string): Promise<XtreamVodStream[]> {
@@ -92,7 +94,7 @@ export class XtreamClient {
         return Array.isArray(data) ? data : [];
     }
 
-    async getVodCategoriesWithContent(): Promise<(XtreamVodCategory & { items: XtreamVodStream[] })[]> {
+    /* async getVodCategoriesWithContent(): Promise<(XtreamVodCategory & { items: XtreamVodStream[] })[]> {
         const categories = await this.getVodCategories();
         const categoriesWithContent = await Promise.all(
             categories.map(async (category) => {
@@ -101,7 +103,7 @@ export class XtreamClient {
             })
         );
         return categoriesWithContent;
-    }
+    } */
 
     async getSeriesCategoriesWithContent(): Promise<(XtreamSeriesCategory & { items: XtreamSeriesInfo[] })[]> {
         const categories = await this.getSeriesCategories();

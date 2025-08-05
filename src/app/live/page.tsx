@@ -1,19 +1,34 @@
+"use client";
+
 import { TopNavbar } from '@/components/common/navbar/top-navbar';
 import { liveSections } from '@/lib/data';
 import { BottomNavBar } from '@/components/common/navbar/bottom-navbar';
-import { LiveSection } from '@/components/live-show/live-show-wrapper';
+import { LiveStreamWrapper } from '@/components/live-stream/live-stream-wrapper';
 import { Main } from '@/components/common/main';
 import { CarouselSection } from '@/components/common/carousel/carousel-section';
+import { useLocalXtreamData } from '@/hooks/use-local-xtream-data';
+import { XTREAM_MEDIA_TYPES } from '@/types';
+import { LoadingContent } from '@/components/common/loading-content';
 
 export default function LivePage() {
+  const { liveCategories, isLoading } =
+    useLocalXtreamData(XTREAM_MEDIA_TYPES.live);
+
   return (
     <Main>
-      <TopNavbar />
-      <CarouselSection>
-          {liveSections.map(section => (
-              <LiveSection key={section.id} section={section} />
-          ))}
-      </CarouselSection>
+      {isLoading ? (
+        <LoadingContent />
+      ) : ( 
+        <>
+          <TopNavbar searchLink="/live/list" />
+          <CarouselSection>
+              {liveCategories.map(category => (
+                  <LiveStreamWrapper key={category.category_id} mediaType={XTREAM_MEDIA_TYPES.live} category={category} />
+              ))}
+          </CarouselSection>
+          <BottomNavBar />
+        </>
+      )}
     </Main>
   );
 }

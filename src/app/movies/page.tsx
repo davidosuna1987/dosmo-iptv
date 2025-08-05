@@ -1,49 +1,38 @@
 "use client";
 
-import { useEffect, useState } from 'react';
 import { TopNavbar } from '@/components/common/navbar/top-navbar';
 import { Hero } from '@/components/common/hero';
 import { CarouselWrapper } from '@/components/common/carousel/carousel-wrapper';
-import { heroItem, homeSections } from '@/lib/data';
 import { Main } from '@/components/common/main';
 import { CarouselSection } from '@/components/common/carousel/carousel-section';
-import { useXtreamCredentials } from '@/hooks/use-xtream-credentials';
-import { useXtreamClient } from '@/services/xtream';
-import { XtreamVodCategory, XtreamVodStream } from '@/types';
+import { LoadingContent } from '@/components/common/loading-content';
+import { BottomNavBar } from '@/components/common/navbar/bottom-navbar';
+import { XTREAM_MEDIA_TYPES } from '@/types';
+import { useLocalXtreamData } from '@/hooks/use-local-xtream-data';
 
 export default function MoviesPage() {
-  const { credentials } = useXtreamCredentials();
-  const { getClient } = useXtreamClient();
-  const [moviesCategories, setMoviesCategories] = useState<(XtreamVodCategory & { items: XtreamVodStream[] })[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchMovies() {
-      if (credentials) {
-        const client = await getClient(credentials);
-        if (client) {
-          const categories = await client.getVodCategoriesWithContent();
-          setMoviesCategories(categories);
-
-          console.log({categories})
-        }
-      }
-      setIsLoading(false);
-    }
-
-    fetchMovies();
-  }, [credentials, getClient]);
+  const { moviesCategories, moviesHero, isLoading } =
+    useLocalXtreamData(XTREAM_MEDIA_TYPES.movies);
 
   return (
     <Main>
-      <TopNavbar searchLink="/movies/list" />
-      <Hero item={heroItem} />
-      <pre>{JSON.stringify(moviesCategories, null, 2)}</pre>
-      <CarouselSection>
-        {homeSections.map(section => (
-          <CarouselWrapper key={section.id} section={section} />
-        ))}
-      </CarouselSection>
+      {isLoading ? (
+        <LoadingContent />
+      ) : ( 
+        <>
+          <TopNavbar searchLink="/movies/list" />
+
+          { moviesHero && <Hero type={XTREAM_MEDIA_TYPES.movies} item={moviesHero} /> }
+
+          <CarouselSection>
+            {moviesCategories.map(category => (
+              <CarouselWrapper key={category.category_id} mediaType={XTREAM_MEDIA_TYPES.movies} category={category} />
+            ))}
+          </CarouselSection>
+
+          <BottomNavBar />
+        </>
+      )}
     </Main>
   );
 }

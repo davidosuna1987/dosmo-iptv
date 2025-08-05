@@ -6,6 +6,7 @@ import { List } from '@/components/common/list/list';
 import { heroItem } from '@/lib/data';
 import { useState } from 'react';
 import { NotFound } from '@/components/common/not-found';
+import { BottomNavBar } from '@/components/common/navbar/bottom-navbar';
 
 export default function MoviesListPage() {
   const [searchInputValue, setSearchInputValue] = useState('')
@@ -22,6 +23,7 @@ export default function MoviesListPage() {
     <Main>
       <TopNavbar onInputChanged={setSearchInputValue}/>
       { filteredItems.length ? <List items={filteredItems} /> : <NotFound /> }
+      <BottomNavBar />
     </Main>
   );
 }

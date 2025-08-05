@@ -1,25 +1,24 @@
 
 import Image from 'next/image';
-import type { CarouselItem } from '@/lib/data';
+import { XtreamMediaType, XtreamPreview } from '@/types';
+import { httpToHttps, xtreamMediaTypeToString } from '@/lib/utils';
 
 interface CarouselCardProps {
-  item: CarouselItem;
+  mediaType: XtreamMediaType
+  item: XtreamPreview;
 }
 
-export function CarouselCard({ item }: CarouselCardProps) {
-  // Using a placeholder size as the API might not provide it.
-  const width = 200;
-  const height = 300;
-
+export function CarouselCard({ mediaType, item }: CarouselCardProps) {
+  
   return (
     <div className="w-[31%] md:w-[23.5%] lg:w-[18.5%] flex-shrink-0 snap-start overflow-hidden group">
       <Image
-        src={"https://via.assets.so/movie.png?id=1&q=95&w=280&h=410&fit=contain"}
-        alt={item.title}
-        width={width}
-        height={height}
+        src={httpToHttps(item.cover)}
+        alt={item.name}
+        width={200}
+        height={300}
         className="object-cover w-full rounded-md aspect-[2/3] group-hover:scale-110 transition-transform duration-200"
-        data-ai-hint="movie poster"
+        data-ai-hint={`${xtreamMediaTypeToString(mediaType)} poster`}
         unoptimized // Added because the image domains from the API are unknown
       />
     </div>

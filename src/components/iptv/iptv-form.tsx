@@ -14,13 +14,14 @@ import { useRouter } from "next/navigation";
 export function IptvForm() {
   const router = useRouter();
   const { encrypt } = useEncryptedPassword();
-  const { saveCredentials, isLoading } = useXtreamCredentials();
+  const { saveCredentials } = useXtreamCredentials();
   const [listName, setListName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [url, setUrl] = useState('');
   const [urlError, setUrlError] = useState<string | null>(null);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const isFormValid = listName && username && password && url;
 
@@ -33,11 +34,14 @@ export function IptvForm() {
       username,
       encryptedPassword,
     });
+    
     router.push('/movies');
   }
 
   const handleSend = (e: React.FormEvent) => {
+    setIsLoading(true);
     e.preventDefault();
+
     const urlPattern = new RegExp(
         '^(https?://)?' + // protocol
         '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
@@ -50,6 +54,7 @@ export function IptvForm() {
 
     if (!urlPattern.test(url)) {
       setUrlError('Por favor, introduce una URL válida.');
+      setIsLoading(false);
       return;
     }
 

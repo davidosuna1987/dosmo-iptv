@@ -5,21 +5,20 @@ export interface SpinnerProps
   extends React.HTMLAttributes<HTMLDivElement> {
   size?: string | number
   border?: string | number
-  text?: string
-  darkText?: string
+  color?: string
 }
 
 const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
-  ({ className, size = 6, border = 2, text = "primary", darkText = "foreground", ...props }, ref) => {
-    const customClass = `size-${size} border-${border} text-${text} dark:text-${darkText}`;
+  ({ className, size = 50, border = 5, color = "primary", ...props }, ref) => {
     return (
       <div
         ref={ref}
         className={cn(
           "inline-block animate-spin rounded-full border-solid border-current border-e-transparent motion-reduce:animate-[spin_1.5s_linear_infinite]",
-          customClass,
           className
         )}
+        style={{ width: `${size}px`, height: `${size}px`, borderWidth: `${border}px`, color: `hsl(var(--${color}))` }}
+
         role="status"
         {...props}
       >

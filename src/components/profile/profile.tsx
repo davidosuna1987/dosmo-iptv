@@ -11,36 +11,38 @@ import {
   Smartphone,
   Shield,
   Power,
+  Tv2Icon,
+  Link,
 } from 'lucide-react';
 import { ProfileInfoRowWrapper } from './profile-info-row-wrapper';
+import { ProfileDetails } from '@/types';
 
-export function Profile() {
+export function Profile({ details, onRefreshClick }: { details: ProfileDetails, onRefreshClick?: () => void }) {
   return (
-    <div className="max-w-[500px] mx-auto flex flex-col gap-4 text-sm pt-10">
+    <div className="w-full max-w-[500px] mx-auto flex flex-col gap-4 text-sm pt-10">
       <ProfileInfoRowWrapper>
-        <ProfileInfoRow icon={Clapperboard} label="Movies" value="80227" />
-        <ProfileInfoRow icon={Library} label="Series" value="17419" />
-        <ProfileInfoRow icon={Tv} label="Live" value="24933" />
-        <ProfileInfoRow icon={RefreshCw} label="Update All" value="" showChevron />
+        <ProfileInfoRow icon={Tv2Icon} label="ListName" value={details.listName} />
       </ProfileInfoRowWrapper>
 
       <ProfileInfoRowWrapper>
-        <ProfileInfoRow icon={User} label="Username" value="8cea4b03585c" />
-        <ProfileInfoRow icon={Calendar} label="Days Left" value="159" />
-        <ProfileInfoRow icon={Globe} label="Timezone" value="Europe/Amsterdam" />
-        <ProfileInfoRow icon={Calendar} label="Start Date" value="Nov 13, 2024" />
-        <ProfileInfoRow icon={Calendar} label="End Date" value="Dec 13, 2025" />
-        <ProfileInfoRow icon={Link2} label="Max Connections" value="1" />
-        <ProfileInfoRow icon={Smartphone} label="App Version" value="1.1.11" />
-        <ProfileInfoRow icon={Shield} label="Privacy Policy" value="" showChevron />
-        <ProfileInfoRow icon={Power} label="Status" value="Active" valueColor="text-green-500" />
+        <ProfileInfoRow icon={Clapperboard} label="Películas" value={details.moviesCount.toString()} />
+        <ProfileInfoRow icon={Library} label="Series" value={details.seriesCount.toString()} />
+        <ProfileInfoRow icon={Tv} label="Live" value={details.liveCount.toString()} />
+        <ProfileInfoRow icon={RefreshCw} label="Actualizar todo" value="" showChevron onClick={onRefreshClick} />
       </ProfileInfoRowWrapper>
 
-       <div className="px-3 rounded-lg bg-card">
-          <div className="flex items-center justify-between py-3 text-sm">
-              <span className="font-medium text-primary">Reset Data</span>
-          </div>
-       </div>
+      <ProfileInfoRowWrapper>
+        <ProfileInfoRow icon={User} label="Username" value={details.username} />
+        <ProfileInfoRow icon={Link} label="URL" value={details.serverUrl} />
+        <ProfileInfoRow icon={Calendar} label="Días restantes" value={details.daysLeft} />
+        <ProfileInfoRow icon={Globe} label="Zona horaria" value={details.timeZone} />
+        <ProfileInfoRow icon={Calendar} label="Fecha de inicio" value={details.startDate} />
+        <ProfileInfoRow icon={Calendar} label="Fecha de fin" value={details.endDate} />
+        <ProfileInfoRow icon={Link2} label="Máx. conexiones" value={details.maxConnections} />
+        <ProfileInfoRow icon={Smartphone} label="Versión de la aplicación" value={details.appVersion} />
+        <ProfileInfoRow icon={Power} label="Estado" value="Active" valueColor={details.status === 'Active' ? 'text-green-500': 'text-red-500'} />
+        <ProfileInfoRow icon={Shield} label="Política de privacidad" value="" showChevron />
+      </ProfileInfoRowWrapper>
     </div>
   );
 }
