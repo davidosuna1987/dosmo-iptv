@@ -1,4 +1,4 @@
-import { WithRating } from "@/types";
+import { WithRating } from "@/domain/xtream";
 
 export function sortByRating<T extends WithRating>(a: T, b: T) {
     return 'rating' in a && 'rating' in b ? 

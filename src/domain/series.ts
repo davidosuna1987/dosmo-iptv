@@ -1,4 +1,4 @@
-import { XtreamPreview, XtreamSeriesInfo } from "@/types";
+import { XtreamPreview, XtreamSeriesInfo } from "@/domain/xtream";
 
 export const mapXtreamSeriesInfoToXtreamPreview = (
     seriesInfo: XtreamSeriesInfo

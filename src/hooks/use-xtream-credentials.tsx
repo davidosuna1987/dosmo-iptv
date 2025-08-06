@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
-import type { XtreamCredentials } from '@/types';
+import type { XtreamCredentials } from '@/domain/xtream';
 import { useEncryptedPassword } from './use-encrypted-password';
 
 const XTREAM_CREDENTIALS_KEY = 'xtream-credentials';

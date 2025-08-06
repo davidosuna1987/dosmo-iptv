@@ -7,7 +7,7 @@ import { Main } from '@/components/common/main';
 import { CarouselSection } from '@/components/common/carousel/carousel-section';
 import { LoadingContent } from '@/components/common/loading-content';
 import { BottomNavBar } from '@/components/common/navbar/bottom-navbar';
-import { XTREAM_MEDIA_TYPES } from '@/types';
+import { XTREAM_MEDIA_TYPES } from '@/domain/xtream';
 import { useLocalXtreamData } from '@/hooks/use-local-xtream-data';
 
 export default function MoviesPage() {

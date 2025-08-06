@@ -12,7 +12,7 @@ import type {
     UserInfo,
     ProfileInfo,
     ServerInfo
-} from '@/types';
+} from '@/domain/xtream';
 import { useEncryptedPassword } from '@/hooks/use-encrypted-password';
 
 

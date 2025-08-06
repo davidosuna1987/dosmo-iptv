@@ -1,4 +1,4 @@
-import { XtreamLiveStream, XtreamPreview } from "@/types";
+import { XtreamLiveStream, XtreamPreview } from "@/domain/xtream";
 
 export const mapXtreamLiveStreamToXtreamPreview = (
     liveStream: XtreamLiveStream

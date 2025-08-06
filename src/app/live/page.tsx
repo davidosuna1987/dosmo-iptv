@@ -7,7 +7,7 @@ import { LiveStreamWrapper } from '@/components/live-stream/live-stream-wrapper'
 import { Main } from '@/components/common/main';
 import { CarouselSection } from '@/components/common/carousel/carousel-section';
 import { useLocalXtreamData } from '@/hooks/use-local-xtream-data';
-import { XTREAM_MEDIA_TYPES } from '@/types';
+import { XTREAM_MEDIA_TYPES } from '@/domain/xtream';
 import { LoadingContent } from '@/components/common/loading-content';
 
 export default function LivePage() {

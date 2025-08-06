@@ -1,4 +1,4 @@
-import { ProfileDetails, ProfileInfo } from "@/types";
+import { ProfileDetails, ProfileInfo } from "@/domain/xtream";
 
 export const mapProfileInfoToProfileDetails = (
     listName: string,

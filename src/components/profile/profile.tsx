@@ -15,7 +15,7 @@ import {
   Link,
 } from 'lucide-react';
 import { ProfileInfoRowWrapper } from './profile-info-row-wrapper';
-import { ProfileDetails } from '@/types';
+import { ProfileDetails } from '@/domain/xtream';
 
 export function Profile({ details, onRefreshClick }: { details: ProfileDetails, onRefreshClick?: () => void }) {
   return (

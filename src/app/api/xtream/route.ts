@@ -1,6 +1,6 @@
 
 import {NextResponse} from 'next/server';
-import type {XtreamCredentials} from '@/types';
+import type {XtreamCredentials} from '@/domain/xtream';
 
 const API_PATH = 'player_api.php';
 

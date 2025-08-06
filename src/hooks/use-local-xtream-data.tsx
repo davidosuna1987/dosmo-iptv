@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { openDB } from "idb";
 import { useXtreamCredentials } from "@/hooks/use-xtream-credentials";
 import { useXtreamClient } from "@/services/xtream";
-import { ProfileInfo, XtreamPreview, XtreamCategoryWithPreview, XtreamSeriesInfo, XtreamVodCategory, XtreamVodStream, XtreamMediaType, XTREAM_MEDIA_TYPES, XtreamLiveStream, XtreamLiveCategory, XtreamSeriesCategory, ProfileDetails } from "@/types";
+import { ProfileInfo, XtreamPreview, XtreamCategoryWithPreview, XtreamSeriesInfo, XtreamVodCategory, XtreamVodStream, XtreamMediaType, XTREAM_MEDIA_TYPES, XtreamLiveStream, XtreamLiveCategory, XtreamSeriesCategory, ProfileDetails } from "@/domain/xtream";
 import { sortByRating } from "@/domain/rating";
 import { mapXtreamVodStreamToXtreamPreview } from "@/domain/movies";
 import { mapXtreamSeriesInfoToXtreamPreview } from "@/domain/series";

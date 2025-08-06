@@ -1,5 +1,5 @@
 // hooks/useEncryptedStorage.ts
-import { EncryptedPassword } from '@/types';
+import { EncryptedPassword } from '@/domain/xtream';
 import { useCallback } from 'react';
 
 // const ENCTYPTED_PASSWORD_STORAGE_KEY = 'encrypted-password';

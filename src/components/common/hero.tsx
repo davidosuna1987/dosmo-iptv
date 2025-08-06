@@ -3,8 +3,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import { DosmoIptvLogo } from './dosmo-iptv-logo';
-import { XtreamPreview, XtreamMediaType } from '@/types';
-import { xtreamMediaTypeToString } from '@/lib/utils';
+import { XtreamPreview, XtreamMediaType, xtreamMediaTypeToString } from '@/domain/xtream';
 import { httpToHttps } from '@/domain/url';
 
 const Play = ({ className }: { className?: string }) => (

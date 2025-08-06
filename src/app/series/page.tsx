@@ -8,7 +8,7 @@ import { CarouselSection } from '@/components/common/carousel/carousel-section';
 import { LoadingContent } from '@/components/common/loading-content';
 import { BottomNavBar } from '@/components/common/navbar/bottom-navbar';
 import { useLocalXtreamData } from '@/hooks/use-local-xtream-data';
-import { XTREAM_MEDIA_TYPES } from '@/types';
+import { XTREAM_MEDIA_TYPES } from '@/domain/xtream';
 
 export default function SeriesPage() {
   const { seriesCategories, seriesHero, isLoading } =

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { XtreamPreview } from '@/types';
+import { XtreamPreview } from '@/domain/xtream';
 import { httpToHttps } from '@/domain/url';
 
 interface LiveStreamCardProps {

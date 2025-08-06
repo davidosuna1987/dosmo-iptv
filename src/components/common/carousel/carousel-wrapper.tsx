@@ -1,6 +1,6 @@
 import { CarouselCard } from './carousel-card';
 import { CategoryHeader } from '../category-header';
-import { XtreamCategoryWithPreview, XtreamMediaType } from '@/types';
+import { XtreamCategoryWithPreview, XtreamMediaType } from '@/domain/xtream';
 
 interface CarouselWrapperProps {
   mediaType: XtreamMediaType;

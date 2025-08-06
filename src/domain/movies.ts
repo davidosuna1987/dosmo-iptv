@@ -1,4 +1,4 @@
-import { XtreamMovieInfo, XtreamPreview, XtreamVodStream } from "@/types";
+import { XtreamMovieInfo, XtreamPreview, XtreamVodStream } from "@/domain/xtream";
 
 export const mapXtreamVodStreamToXtreamPreview = (
     vodStream: XtreamVodStream

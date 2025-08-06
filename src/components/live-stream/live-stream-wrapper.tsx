@@ -1,6 +1,6 @@
 import { LiveStreamCard } from './live-stream-card';
 import { CategoryHeader } from '../common/category-header';
-import { XtreamCategoryWithPreview, XtreamMediaType } from '@/types';
+import { XtreamCategoryWithPreview, XtreamMediaType } from '@/domain/xtream';
 
 interface LiveStreamWrapperProps {
   mediaType: XtreamMediaType;
