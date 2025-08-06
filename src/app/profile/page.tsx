@@ -2,7 +2,7 @@
 
 import { Main } from '@/components/common/main';
 import { Profile } from '@/components/profile/profile';
-import { IptvForm } from '@/components/iptv/iptv-form';
+import { XtreamAddForm } from '@/components/xtream/xtream-add-form';
 import { useXtreamCredentials } from '@/hooks/use-xtream-credentials';
 import { Spinner } from '@/components/ui/spinner';
 import { BottomNavBar } from '@/components/common/navbar/bottom-navbar';
@@ -26,7 +26,7 @@ export default function MySpacePage() {
         <Profile details={profileDetails} onRefreshClick={() => setIsSheetOpen(true)} />
       ) : (
         <div className="flex justify-center items-center pt-[12.5vh]">
-          <IptvForm />
+          <XtreamAddForm />
         </div>
       )}
       <BottomNavBar />

@@ -12,7 +12,7 @@ import { useEncryptedPassword } from "@/hooks/use-encrypted-password";
 import { useRouter } from "next/navigation";
 import { httpsToHttp, isHttps } from "@/domain/url";
 
-export function IptvForm() {
+export function XtreamAddForm() {
   const router = useRouter();
   const { encrypt } = useEncryptedPassword();
   const { credentials, saveCredentials } = useXtreamCredentials();
