@@ -2,27 +2,26 @@
 
 import { TopNavbar } from '@/components/common/navbar/top-navbar';
 import { Main } from '@/components/common/main';
-import { List } from '@/components/common/list/list';
-import { heroItem } from '@/lib/data';
 import { useState } from 'react';
 import { NotFound } from '@/components/common/not-found';
 import { BottomNavBar } from '@/components/common/navbar/bottom-navbar';
+import { XtreamPreview } from '@/domain/xtream';
+import { ChunkList } from '@/components/common/list/chunk-list';
+import { useLocalXtreamData } from '@/hooks/use-local-xtream-data';
+import { mapXtreamVodStreamToXtreamPreview } from '@/domain/movies';
 
 export default function MoviesListPage() {
+  const { movies, isLoading } = useLocalXtreamData();
   const [searchInputValue, setSearchInputValue] = useState('')
 
-  const items = Array.from({ length: 50 }).map((_, index) => ({
-    ...heroItem,
-    id: index,
-    title: `Movie ${index}`,
-  }))
-
-  const filteredItems = items.filter(item => item.title.toLowerCase().includes(searchInputValue.toLowerCase()))
+  const items = movies
+    .map(mapXtreamVodStreamToXtreamPreview)
+    .filter(item => item.name.toLowerCase().includes(searchInputValue.toLowerCase()));
 
   return (
     <Main>
       <TopNavbar onInputChanged={setSearchInputValue}/>
-      { filteredItems.length ? <List items={filteredItems} /> : <NotFound /> }
+      { items.length ? <ChunkList items={items} /> : <NotFound /> }
       <BottomNavBar />
     </Main>
   );

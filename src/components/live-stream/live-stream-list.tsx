@@ -1,13 +1,13 @@
-import { Main } from "../main";
 import { XtreamPreview } from "@/domain/xtream";
-import { ListItem } from "./list-item";
+import { LiveStreamListItem } from "./live-stream-list-item";
+import { Main } from "../common/main";
 
 interface ListProps {
   title?: string;
   items: XtreamPreview[];
 }
 
-export function List({ title, items }: ListProps) {
+export function LiveStreamList({ title, items }: ListProps) {
     return (
       <Main>
         <section className="pt-16">
@@ -16,7 +16,7 @@ export function List({ title, items }: ListProps) {
           }
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 md:gap-6 lg:gap-8">
             { items.map(item => (
-              <ListItem key={item.id} item={item} />
+              <LiveStreamListItem key={item.id} item={item} />
             )) }
           </div>
         </section>

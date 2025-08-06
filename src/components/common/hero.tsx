@@ -21,8 +21,6 @@ export function Hero({ type, item }: HeroProps) {
   const secureUrl = safeUrl(item.cover)
   
   return (
-    <>
-    <pre>{JSON.stringify(item, null, 2)}</pre>
     <div className="flex justify-center bg-background relative -mx-4 md:-mx-8">
       <div className='absolute size-full after:content-[""] after:absolute after:inset-0 after:pointer-events-none after:bg-gradient-to-t after:from-black after:to-black/90'> {/*after:bg-background after:opacity-[0.925]*/}
         <Image
@@ -68,6 +66,5 @@ export function Hero({ type, item }: HeroProps) {
         </div>
       </div>
     </div>
-    </>
   );
 }

@@ -1,18 +1,18 @@
 import Image from 'next/image';
 import { XtreamPreview } from '@/domain/xtream';
-import { httpToHttps } from '@/domain/url';
+import { safeUrl } from '@/domain/url';
 
 interface ListItemProps {
   item: XtreamPreview;
 }
 
 export function ListItem({ item }: ListItemProps) {
-  const safeUrl = httpToHttps(item.cover)
+  const secureUrl = safeUrl(item.cover)
 
   return (
     <div className="w-full flex-shrink-0 snap-start overflow-hidden group">
       <Image
-        src={safeUrl}
+        src={secureUrl}
         alt={item.name}
         width={200}
         height={300}

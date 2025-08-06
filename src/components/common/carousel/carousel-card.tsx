@@ -1,7 +1,7 @@
 
 import Image from 'next/image';
 import { XtreamMediaType, XtreamPreview, xtreamMediaTypeToString } from '@/domain/xtream';
-import { httpToHttps } from '@/domain/url';
+import { safeUrl } from '@/domain/url';
 
 interface CarouselCardProps {
   mediaType: XtreamMediaType
@@ -9,11 +9,12 @@ interface CarouselCardProps {
 }
 
 export function CarouselCard({ mediaType, item }: CarouselCardProps) {
-  
+  const secureUrl = safeUrl(item.cover);
+
   return (
     <div className="w-[31%] md:w-[23.5%] lg:w-[18.5%] flex-shrink-0 snap-start overflow-hidden group">
       <Image
-        src={httpToHttps(item.cover)}
+        src={secureUrl}
         alt={item.name}
         width={200}
         height={300}

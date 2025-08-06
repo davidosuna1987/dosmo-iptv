@@ -6,21 +6,21 @@ import { useState } from 'react';
 import { NotFound } from '@/components/common/not-found';
 import { BottomNavBar } from '@/components/common/navbar/bottom-navbar';
 import { useLocalXtreamData } from '@/hooks/use-local-xtream-data';
-import { mapXtreamSeriesInfoToXtreamPreview } from '@/domain/series';
-import { ChunkList } from '@/components/common/list/chunk-list';
+import { mapXtreamLiveStreamToXtreamPreview } from '@/domain/live';
+import { LiveStreamChunkList } from '@/components/live-stream/live-stream-chunk-list';
 
 export default function MoviesListPage() {
-  const { series, isLoading } = useLocalXtreamData();
+  const { live, isLoading } = useLocalXtreamData();
   const [searchInputValue, setSearchInputValue] = useState('')
 
-  const items = series
-    .map(mapXtreamSeriesInfoToXtreamPreview)
+  const items = live
+    .map(mapXtreamLiveStreamToXtreamPreview)
     .filter(item => item.name.toLowerCase().includes(searchInputValue.toLowerCase()));
 
   return (
     <Main>
       <TopNavbar onInputChanged={setSearchInputValue}/>
-      { items.length ? <ChunkList items={items} /> : <NotFound /> }
+      { items.length ? <LiveStreamChunkList items={items} /> : <NotFound /> }
       <BottomNavBar />
     </Main>
   );
