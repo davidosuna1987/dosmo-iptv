@@ -2,11 +2,12 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import type { XtreamCredentials } from '@/domain/xtream';
-import { useEncryptedPassword } from './use-encrypted-password';
+import { useRouter } from 'next/navigation';
 
 const XTREAM_CREDENTIALS_KEY = 'xtream-credentials';
 
 export function useXtreamCredentials() {
+  const router = useRouter();
   const [credentials, setCredentials] = useState<XtreamCredentials | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -15,6 +16,8 @@ export function useXtreamCredentials() {
       const item = window.localStorage.getItem(XTREAM_CREDENTIALS_KEY);
       if (item) {
         setCredentials(JSON.parse(item));
+      } else {
+        router.push('/xtream/add');
       }
     } catch (error) {
       console.error('Failed to parse credentials from localStorage', error);
