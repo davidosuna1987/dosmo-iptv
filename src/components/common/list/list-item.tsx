@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { XtreamPreview } from '@/types';
-import { httpToHttps } from '@/lib/utils';
+import { httpToHttps } from '@/domain/url';
 
 interface ListItemProps {
   item: XtreamPreview;

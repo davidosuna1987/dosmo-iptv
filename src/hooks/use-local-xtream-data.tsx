@@ -85,9 +85,9 @@ export function useLocalXtreamData(mediaType?: XtreamMediaType) {
           setProfileDetails(
             mapProfileInfoToProfileDetails(
               credentials.listName,
-              movies.length,
-              series.length,
-              live.length,
+              storedMovies.length,
+              storedSeries.length,
+              storedLive.length,
               storedProfileInfo
             )
           )

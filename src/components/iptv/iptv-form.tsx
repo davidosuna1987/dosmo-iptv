@@ -5,16 +5,17 @@ import { DosmoIptvLogo } from "@/components/common/dosmo-iptv-logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BottomSheet } from "@/components/ui/bottom-sheet";
 import { useXtreamCredentials } from "@/hooks/use-xtream-credentials";
 import { useEncryptedPassword } from "@/hooks/use-encrypted-password";
 import { useRouter } from "next/navigation";
+import { httpsToHttp, isHttps } from "@/domain/url";
 
 export function IptvForm() {
   const router = useRouter();
   const { encrypt } = useEncryptedPassword();
-  const { saveCredentials } = useXtreamCredentials();
+  const { credentials, saveCredentials } = useXtreamCredentials();
   const [listName, setListName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -60,7 +61,7 @@ export function IptvForm() {
 
     setUrlError(null);
 
-    if (url.startsWith('https://')) {
+    if (isHttps(url)) {
       setIsSheetOpen(true);
     } else {
       processForm();
@@ -68,7 +69,8 @@ export function IptvForm() {
   };
 
   const handleUrlProtocolChange = () => {
-    setUrl(url.replace('https://', 'http://'));
+    const unsafeUrl = httpsToHttp(url);
+    setUrl(unsafeUrl);
     setIsSheetOpen(false);
     // We need to defer processing to allow state to update
     setTimeout(processForm, 10);
@@ -80,8 +82,15 @@ export function IptvForm() {
     setTimeout(processForm, 10);
   }
 
+  useEffect(() => {
+    if(credentials?.serverUrl) {
+      router.push('/movies');
+    }
+  }, [credentials])
+
   return (
     <>
+      <div><pre>{JSON.stringify({ listName: credentials?.listName, url: credentials?.serverUrl, username: credentials?.username }, null, 2)}</pre></div>
       <form onSubmit={handleSend} className="flex flex-col items-center gap-4 w-full max-w-sm">
         <DosmoIptvLogo iptv className="max-w-[250px] mb-4" />
         <div className="grid w-full max-w-sm items-center gap-1.5">

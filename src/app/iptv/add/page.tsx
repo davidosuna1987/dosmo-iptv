@@ -4,7 +4,7 @@ import { IptvForm } from "@/components/iptv/iptv-form";
 export default function AddIptvPage() {
   return (
     <Main>
-      <div className="flex justify-center items-center pt-[12.5vh]">
+      <div className="flex flex-col justify-center items-center pt-[12.5vh]">
         <IptvForm />
       </div>
     </Main>

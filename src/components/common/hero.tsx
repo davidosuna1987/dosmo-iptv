@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import { DosmoIptvLogo } from './dosmo-iptv-logo';
 import { XtreamPreview, XtreamMediaType } from '@/types';
-import { httpToHttps, xtreamMediaTypeToString } from '@/lib/utils';
+import { xtreamMediaTypeToString } from '@/lib/utils';
+import { httpToHttps } from '@/domain/url';
 
 const Play = ({ className }: { className?: string }) => (
     <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

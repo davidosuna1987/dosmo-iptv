@@ -1,7 +1,8 @@
 
 import Image from 'next/image';
 import { XtreamMediaType, XtreamPreview } from '@/types';
-import { httpToHttps, xtreamMediaTypeToString } from '@/lib/utils';
+import { xtreamMediaTypeToString } from '@/lib/utils';
+import { httpToHttps } from '@/domain/url';
 
 interface CarouselCardProps {
   mediaType: XtreamMediaType

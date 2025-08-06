@@ -9,5 +9,3 @@ export function cn(...inputs: ClassValue[]) {
 export const xtreamMediaTypeToString = (type: XtreamMediaType) => (
   type === XTREAM_MEDIA_TYPES.movies ? 'Películas' : type === XTREAM_MEDIA_TYPES.series ? 'Series' : 'Streaming'
 )
-
-export const httpToHttps = (url: string) => url.replace(/^http:\/\//, 'https://')
