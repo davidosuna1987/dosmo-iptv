@@ -9,6 +9,7 @@ import { XtreamPreview } from '@/domain/xtream';
 import { ChunkList } from '@/components/common/list/chunk-list';
 import { useLocalXtreamData } from '@/hooks/use-local-xtream-data';
 import { mapXtreamVodStreamToXtreamPreview } from '@/domain/movies';
+import { LoadingContent } from '@/components/common/loading-content';
 
 export default function MoviesListPage() {
   const { movies, isLoading } = useLocalXtreamData();
@@ -20,9 +21,16 @@ export default function MoviesListPage() {
 
   return (
     <Main>
-      <TopNavbar onInputChanged={setSearchInputValue}/>
-      { items.length ? <ChunkList items={items} /> : <NotFound /> }
-      <BottomNavBar />
+      { isLoading ? (
+          <LoadingContent /> 
+        ) : (
+          <>
+            <TopNavbar onInputChanged={setSearchInputValue}/>
+            { items.length ? <ChunkList items={items} /> : <NotFound /> }
+            <BottomNavBar />
+          </>
+        )
+      }
     </Main>
   );
 }

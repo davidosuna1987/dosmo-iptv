@@ -8,6 +8,7 @@ import { BottomNavBar } from '@/components/common/navbar/bottom-navbar';
 import { useLocalXtreamData } from '@/hooks/use-local-xtream-data';
 import { mapXtreamSeriesInfoToXtreamPreview } from '@/domain/series';
 import { ChunkList } from '@/components/common/list/chunk-list';
+import { LoadingContent } from '@/components/common/loading-content';
 
 export default function MoviesListPage() {
   const { series, isLoading } = useLocalXtreamData();
@@ -19,9 +20,16 @@ export default function MoviesListPage() {
 
   return (
     <Main>
-      <TopNavbar onInputChanged={setSearchInputValue}/>
-      { items.length ? <ChunkList items={items} /> : <NotFound /> }
-      <BottomNavBar />
+      { isLoading ? (
+          <LoadingContent /> 
+        ) : (
+          <>
+            <TopNavbar onInputChanged={setSearchInputValue}/>
+            { items.length ? <ChunkList items={items} /> : <NotFound /> }
+            <BottomNavBar />
+          </>
+        )
+      }
     </Main>
   );
 }
