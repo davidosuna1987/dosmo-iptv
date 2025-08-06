@@ -91,7 +91,7 @@ export function XtreamAddForm() {
   return (
     <>
       <form onSubmit={handleSend} className="flex flex-col items-center gap-4 w-full max-w-sm">
-        <DosmoIptvLogo iptv className="max-w-[250px] mb-4" />
+        <DosmoIptvLogo iptv className="w-full max-w-[clamp(0px,65vw,250px)] sm:max-w-[250px] mb-4" />
         <div className="grid w-full max-w-sm items-center gap-1.5">
           <Label htmlFor="list-name">Nombre de la lista</Label>
           <Input type="text" id="list-name" placeholder="Nombre de la lista" value={listName} onChange={(e) => setListName(e.target.value)} disabled={isLoading} />
