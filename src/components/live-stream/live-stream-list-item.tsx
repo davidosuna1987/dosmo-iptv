@@ -10,7 +10,7 @@ export function LiveStreamListItem({ item }: LiveStreamListItemProps) {
   const secureUrl = safeUrl(item.cover)
 
   return (
-    <div className="w-full flex-shrink-0 snap-start flex flex-col gap-2 group rounded-lg overflow-hidden">
+    <div className="w-full flex-shrink-0 snap-start flex flex-col group rounded-lg overflow-hidden">
       <div className="aspect-square flex items-center justify-center overflow-hidden">
         <Image
           src={secureUrl}
