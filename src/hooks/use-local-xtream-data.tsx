@@ -1,5 +1,5 @@
 // src/hooks/use-local-xtream-data.ts
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { openDB } from "idb";
 import { useXtreamCredentials } from "@/hooks/use-xtream-credentials";
 import { useXtreamClient } from "@/services/xtream";
@@ -78,6 +78,16 @@ export function useLocalXtreamData(mediaType?: XtreamMediaType) {
         let storedLiveCategories = await db.get("live_categories", "all");
         let storedLive = await db.get("live", "all");
 
+        setProfileDetails(
+          mapProfileInfoToProfileDetails(
+            credentials.listName,
+            storedMovies?.length ?? 0,
+            storedSeries?.length ?? 0,
+            storedLive?.length ?? 0,
+            storedProfileInfo
+          )
+        )
+
         if (!storedProfileInfo && client) {
           storedProfileInfo = await client.getProfileInfo(); // as ProfileInfo
           await db.put("profile", storedProfileInfo, "all");
@@ -85,23 +95,13 @@ export function useLocalXtreamData(mediaType?: XtreamMediaType) {
           setProfileDetails(
             mapProfileInfoToProfileDetails(
               credentials.listName,
-              storedMovies.length,
-              storedSeries.length,
-              storedLive.length,
+              storedMovies?.length ?? 0,
+              storedSeries?.length ?? 0,
+              storedLive?.length ?? 0,
               storedProfileInfo
             )
           )
         }
-
-        setProfileDetails(
-          mapProfileInfoToProfileDetails(
-            credentials.listName,
-            storedMovies.length,
-            storedSeries.length,
-            storedLive.length,
-            storedProfileInfo
-          )
-        )
 
         if(loadMovies){
           if ((!storedMoviesCategories || !storedMovies) && client) {

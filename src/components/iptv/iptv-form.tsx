@@ -90,7 +90,6 @@ export function IptvForm() {
 
   return (
     <>
-      <div><pre>{JSON.stringify({ listName: credentials?.listName, url: credentials?.serverUrl, username: credentials?.username }, null, 2)}</pre></div>
       <form onSubmit={handleSend} className="flex flex-col items-center gap-4 w-full max-w-sm">
         <DosmoIptvLogo iptv className="max-w-[250px] mb-4" />
         <div className="grid w-full max-w-sm items-center gap-1.5">
