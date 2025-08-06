@@ -92,6 +92,7 @@ export type XtreamVodStream = {
 
 export type XtreamPreview = {
     num: number,
+    id: number,
     name: string,
     cover: string,
     cover_big?: string,
