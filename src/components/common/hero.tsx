@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import { DosmoIptvLogo } from './dosmo-iptv-logo';
 import { XtreamPreview, XtreamMediaType, xtreamMediaTypeToString } from '@/domain/xtream';
-import { httpToHttps } from '@/domain/url';
+import { safeUrl } from '@/domain/url';
 
 const Play = ({ className }: { className?: string }) => (
     <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -18,13 +18,15 @@ interface HeroProps {
 }
 
 export function Hero({ type, item }: HeroProps) {
-  const safeUrl = httpToHttps(item.cover)
+  const secureUrl = safeUrl(item.cover)
   
   return (
+    <>
+    <pre>{JSON.stringify(item, null, 2)}</pre>
     <div className="flex justify-center bg-background relative -mx-4 md:-mx-8">
       <div className='absolute size-full after:content-[""] after:absolute after:inset-0 after:pointer-events-none after:bg-gradient-to-t after:from-black after:to-black/90'> {/*after:bg-background after:opacity-[0.925]*/}
         <Image
-          src={safeUrl}
+          src={secureUrl}
           alt={item.name}
           width={200}
           height={300}
@@ -32,11 +34,12 @@ export function Hero({ type, item }: HeroProps) {
           priority
           data-ai-hint="movie poster"
           unoptimized
+          
         />
       </div>
       <div className="relative w-full max-w-[280px] md:max-w-[400px] lg:max-w-[500px] h-full rounded-xl overflow-hidden pt-16">
         <Image
-          src={safeUrl}
+          src={secureUrl}
           alt={item.name}
           width={200}
           height={300}
@@ -65,5 +68,6 @@ export function Hero({ type, item }: HeroProps) {
         </div>
       </div>
     </div>
+    </>
   );
 }
