@@ -1,5 +1,5 @@
 TODO:
-•⁠  ⁠renombrar name->title en XtreamPreview
+•⁠  cambiar es - por bandera de idioma
 •⁠  ⁠Detalle películas 
 •⁠  ⁠Detalle series
 •⁠  ⁠Refresh en profile y en barra de búsqueda

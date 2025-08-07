@@ -17,7 +17,7 @@ export default function MoviesListPage() {
 
   const items = live
     .map(mapXtreamLiveStreamToXtreamPreview)
-    .filter(item => item.name.toLowerCase().includes(searchInputValue.toLowerCase()));
+    .filter(item => item.title.toLowerCase().includes(searchInputValue.toLowerCase()));
 
   const topNavbarTitle = xtreamMediaTypeToString(XTREAM_MEDIA_TYPES.live).toUpperCase();
 

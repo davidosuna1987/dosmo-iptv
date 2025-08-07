@@ -5,12 +5,7 @@ import { Plus } from 'lucide-react';
 import { DosmoIptvLogo } from './dosmo-iptv-logo';
 import { XtreamPreview, XtreamMediaType, xtreamMediaTypeToString } from '@/domain/xtream';
 import { safeUrl } from '@/domain/url';
-
-const Play = ({ className }: { className?: string }) => (
-    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 5V19L19 12L8 5Z" />
-    </svg>
-)
+import { PlayIcon } from '../ui/play-icon';
 
 interface HeroProps {
   type: XtreamMediaType
@@ -25,7 +20,7 @@ export function Hero({ type, item }: HeroProps) {
       <div className='absolute size-full after:content-[""] after:absolute after:inset-0 after:pointer-events-none after:bg-gradient-to-t after:from-black after:to-black/90'> {/*after:bg-background after:opacity-[0.925]*/}
         <Image
           src={secureUrl}
-          alt={item.name}
+          alt={item.title}
           width={200}
           height={300}
           className="object-cover size-full"
@@ -38,7 +33,7 @@ export function Hero({ type, item }: HeroProps) {
       <div className="relative w-full max-w-[280px] md:max-w-[400px] lg:max-w-[500px] h-full rounded-xl overflow-hidden pt-16">
         <Image
           src={secureUrl}
-          alt={item.name}
+          alt={item.title}
           width={200}
           height={300}
           className="object-cover size-full"
@@ -54,7 +49,7 @@ export function Hero({ type, item }: HeroProps) {
               </p>
               <div className="grid grid-cols-2 gap-3">
                   <Button size="lg" className="w-full font-bold border-0">
-                      <Play />
+                      <PlayIcon />
                       Reproducir
                   </Button>
                   <Button size="lg" variant="secondary" className="w-full font-bold border-0">

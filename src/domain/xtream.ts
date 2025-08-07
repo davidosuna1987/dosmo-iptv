@@ -94,7 +94,7 @@ export type XtreamVodStream = {
 export type XtreamPreview = {
     num: number,
     id: number,
-    name: string,
+    title: string,
     cover: string,
     cover_big?: string,
     rating?: number | string | null,

@@ -17,7 +17,7 @@ export default function MoviesListPage() {
 
   const items = series
     .map(mapXtreamSeriesInfoToXtreamPreview)
-    .filter(item => item.name.toLowerCase().includes(searchInputValue.toLowerCase()));
+    .filter(item => item.title.toLowerCase().includes(searchInputValue.toLowerCase()));
 
   const topNavbarTitle = xtreamMediaTypeToString(XTREAM_MEDIA_TYPES.series).toUpperCase();
 

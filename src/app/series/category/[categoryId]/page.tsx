@@ -23,7 +23,7 @@ export default function SeriesCategoryPage() {
   const items = series
     .map(mapXtreamSeriesInfoToXtreamPreview)
     .filter(item => item.category_ids.includes(categoryId))
-    .filter(item => item.name.toLowerCase().includes(searchInputValue.toLowerCase()));
+    .filter(item => item.title.toLowerCase().includes(searchInputValue.toLowerCase()));
 
 
   return (

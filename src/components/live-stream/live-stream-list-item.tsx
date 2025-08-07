@@ -14,7 +14,7 @@ export function LiveStreamListItem({ item }: LiveStreamListItemProps) {
       <div className="aspect-square flex items-center justify-center overflow-hidden">
         <Image
           src={secureUrl}
-          alt={item.name}
+          alt={item.title}
           width={200}
           height={300}
           className="object-cover w-full aspect-square group-hover:scale-110 transition-transform duration-200"
@@ -23,7 +23,7 @@ export function LiveStreamListItem({ item }: LiveStreamListItemProps) {
         />
       </div>
       <div className='bg-secondary group h-12 flex items-center px-2 pt-1'>
-        <p className="text-xs font-semibold line-clamp-2 group-hover:text-primary">{item.name}</p>
+        <p className="text-xs font-semibold line-clamp-2 group-hover:text-primary">{item.title}</p>
       </div>
     </div>
   );
