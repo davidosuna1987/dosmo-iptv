@@ -8,11 +8,14 @@ import Link from "next/link";
 import { Input } from "@/components/ui/input";
 
 type TopNavbarProps = {
+  title?: string;
   searchLink?: string;
   onInputChanged?: (value: string) => void;
 };
 
-export function TopNavbar({ searchLink, onInputChanged }: TopNavbarProps) {
+const DEFAULT_TITLE = 'DOSMO IPTV';
+
+export function TopNavbar({ title = DEFAULT_TITLE, searchLink, onInputChanged }: TopNavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [isSearchInputVisible, setIsSearchInputVisible] = useState(!searchLink);
   const [searchInputValue, setSearchInputValue] = useState("");
@@ -69,6 +72,8 @@ export function TopNavbar({ searchLink, onInputChanged }: TopNavbarProps) {
 
   const showNavbarTitle = searchLink || !isSearchInputVisible
 
+  const placeholder = title === DEFAULT_TITLE ? 'Buscar' : `Buscar en ${title.toLowerCase()}`
+
   return (
     <div
       className={`fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-between px-3 md:px-6 py-2 transition-colors duration-300 ${
@@ -79,7 +84,7 @@ export function TopNavbar({ searchLink, onInputChanged }: TopNavbarProps) {
     >
       <h1 className="text-lg font-bold flex items-center gap-2">
         <DosmoIptvLogo className="w-8" />
-        { showNavbarTitle && <span>DOSMO IPTV</span> }
+        { showNavbarTitle && <span>{title}</span> }
       </h1>
       { searchLink ?
         (
@@ -101,7 +106,7 @@ export function TopNavbar({ searchLink, onInputChanged }: TopNavbarProps) {
         ) : isSearchInputVisible ?
         (
           <div className="flex items-center gap-2 flex-1 ml-3">
-            <Input ref={inputRef} value={searchInputValue} onChange={handleInputChange} placeholder="Buscar" onKeyDown={handleInputKeydown} />
+            <Input ref={inputRef} value={searchInputValue} onChange={handleInputChange} placeholder={placeholder} onKeyDown={handleInputKeydown} />
             <Button
               variant="ghost"
               size="icon"

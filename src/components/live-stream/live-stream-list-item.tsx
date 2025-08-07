@@ -22,7 +22,9 @@ export function LiveStreamListItem({ item }: LiveStreamListItemProps) {
           unoptimized // Added because the image domains from the API are unknown
         />
       </div>
-      <p className="text-center bg-secondary text-xs font-semibold truncate py-3 px-2">{item.name}</p>
+      <div className='bg-secondary group h-12 flex items-center px-2 pt-1'>
+        <p className="text-xs font-semibold line-clamp-2 group-hover:text-primary">{item.name}</p>
+      </div>
     </div>
   );
 }

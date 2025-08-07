@@ -1,0 +1,12 @@
+TODO:
+•⁠  ⁠renombrar name->title en XtreamPreview
+•⁠  ⁠Detalle películas 
+•⁠  ⁠Detalle series
+•⁠  ⁠Refresh en profile y en barra de búsqueda
+•⁠  ⁠skeletons
+•⁠  ⁠context de contenido
+•⁠  ⁠multipista
+•⁠  ⁠guardar progreso
+•⁠  ⁠guardar favoritos
+•⁠  ⁠añadidos recientemente 
+•⁠  ⁠IA suggestions

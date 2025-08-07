@@ -1,7 +1,6 @@
 "use client";
 
 import { TopNavbar } from '@/components/common/navbar/top-navbar';
-import { liveSections } from '@/lib/data';
 import { BottomNavBar } from '@/components/common/navbar/bottom-navbar';
 import { LiveStreamWrapper } from '@/components/live-stream/live-stream-wrapper';
 import { Main } from '@/components/common/main';

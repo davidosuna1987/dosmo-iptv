@@ -1,6 +1,5 @@
 import type {Metadata} from 'next';
 import './globals.css';
-import { XtreamProvider } from '@/context/xtream-context';
 
 export const metadata: Metadata = {
   title: 'DOSMO IPTV',

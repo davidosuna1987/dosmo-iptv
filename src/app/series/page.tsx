@@ -21,15 +21,12 @@ export default function SeriesPage() {
       ) : ( 
         <>
           <TopNavbar searchLink="/series/list" />
-
           { seriesHero && <Hero type={XTREAM_MEDIA_TYPES.series} item={seriesHero} /> }
-
           <CarouselSection>
             {seriesCategories.map(category => (
               <CarouselWrapper key={category.category_id} mediaType={XTREAM_MEDIA_TYPES.series} category={category} />
             ))}
           </CarouselSection>
-
           <BottomNavBar />
         </>
       )}

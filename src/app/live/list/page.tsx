@@ -9,6 +9,7 @@ import { useLocalXtreamData } from '@/hooks/use-local-xtream-data';
 import { mapXtreamLiveStreamToXtreamPreview } from '@/domain/live';
 import { LiveStreamChunkList } from '@/components/live-stream/live-stream-chunk-list';
 import { LoadingContent } from '@/components/common/loading-content';
+import { XTREAM_MEDIA_TYPES, xtreamMediaTypeToString } from '@/domain/xtream';
 
 export default function MoviesListPage() {
   const { live, isLoading } = useLocalXtreamData();
@@ -18,13 +19,15 @@ export default function MoviesListPage() {
     .map(mapXtreamLiveStreamToXtreamPreview)
     .filter(item => item.name.toLowerCase().includes(searchInputValue.toLowerCase()));
 
+  const topNavbarTitle = xtreamMediaTypeToString(XTREAM_MEDIA_TYPES.live).toUpperCase();
+
   return (
     <Main>
       { isLoading ? (
           <LoadingContent /> 
         ) : (
           <>
-            <TopNavbar onInputChanged={setSearchInputValue}/>
+            <TopNavbar onInputChanged={setSearchInputValue} title={topNavbarTitle} />
             { items.length ? <LiveStreamChunkList items={items} /> : <NotFound /> }
             <BottomNavBar />
           </>
