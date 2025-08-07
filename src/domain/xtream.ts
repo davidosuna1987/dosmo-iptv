@@ -85,6 +85,7 @@ export type XtreamVodStream = {
     added: string;
     is_adult: number;
     category_id: string;
+    category_ids: number[];
     container_extension: string;
     custom_sid: string | null;
     direct_source: string;
@@ -98,6 +99,7 @@ export type XtreamPreview = {
     cover_big?: string,
     rating?: number | string | null,
     rating_5based?: number | string | null,
+    category_ids: number[],
 }
 
 export type XtreamCategoryWithPreview = {
@@ -145,6 +147,7 @@ export type XtreamSeriesInfo = {
     youtube_trailer: string;
     episode_run_time: string;
     category_id: string;
+    category_ids: number[];
 }
   
 export type XtreamMovieData = {
@@ -250,6 +253,7 @@ export type XtreamLiveStream = {
     epg_channel_id: string | null;
     added: string;
     category_id: string;
+    category_ids: number[];
     custom_sid: string | null;
     tv_archive: number;
     direct_source: string;

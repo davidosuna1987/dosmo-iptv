@@ -7,4 +7,6 @@ export const mapXtreamLiveStreamToXtreamPreview = (
     id: liveStream.stream_id,
     name: liveStream.name,
     cover: liveStream.stream_icon,
-})
+    cover_big: liveStream.stream_icon,
+    category_ids: liveStream.category_ids,
+});

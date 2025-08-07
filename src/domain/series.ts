@@ -9,4 +9,5 @@ export const mapXtreamSeriesInfoToXtreamPreview = (
     cover: seriesInfo.cover,
     rating: seriesInfo.rating,
     rating_5based: seriesInfo.rating_5based,
+    category_ids: seriesInfo.category_ids,
 });
