@@ -6,6 +6,7 @@ import { DosmoIptvLogo } from './dosmo-iptv-logo';
 import { XtreamPreview, XtreamMediaType, xtreamMediaTypeToString } from '@/domain/xtream';
 import { safeUrl } from '@/domain/url';
 import { PlayIcon } from '../ui/play-icon';
+import Link from 'next/link';
 
 interface HeroProps {
   item: XtreamPreview;
@@ -13,6 +14,7 @@ interface HeroProps {
 
 export function Hero({ item }: HeroProps) {
   const secureUrl = safeUrl(item.cover)
+  const detailUrl = `/${item.mediaType}/${item.id}`;
   
   return (
     <div className="flex justify-center bg-background relative -mx-4 md:-mx-8">
@@ -47,10 +49,12 @@ export function Hero({ item }: HeroProps) {
                 {xtreamMediaTypeToString(item.mediaType)}
               </p>
               <div className="grid grid-cols-2 gap-3">
-                  <Button size="lg" className="w-full font-bold border-0">
-                      <PlayIcon />
-                      Reproducir
-                  </Button>
+                  <Link href={detailUrl}>
+                      <Button size="lg" className="w-full font-bold border-0">
+                          <PlayIcon />
+                          Reproducir
+                      </Button>
+                  </Link>
                   <Button size="lg" variant="secondary" className="w-full font-bold border-0">
                       <Plus />
                       Favoritos
