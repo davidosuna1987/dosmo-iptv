@@ -23,9 +23,9 @@ export const XTREAM_MEDIA_TYPES = {
 } as const
 
 export type XtreamMediaType = keyof typeof XTREAM_MEDIA_TYPES
-export type XtreamMediaTipeMovies = typeof XTREAM_MEDIA_TYPES.movies
-export type XtreamMediaTipeSeries = typeof XTREAM_MEDIA_TYPES.series
-export type XtreamMediaTipeLive = typeof XTREAM_MEDIA_TYPES.live
+export type XtreamMediaTypeMovies = typeof XTREAM_MEDIA_TYPES.movies
+export type XtreamMediaTypeSeries = typeof XTREAM_MEDIA_TYPES.series
+export type XtreamMediaTypeLive = typeof XTREAM_MEDIA_TYPES.live
 
 export type UserInfo = {
     username: string
@@ -100,10 +100,10 @@ export type XtreamPreview = {
     id: number
     title: string
     cover: string
-    cover_big?: string
+    coverBig?: string
     rating?: number | string | null
-    rating_5based?: number | string | null
-    category_ids: number[]
+    rating5Based?: number | string | null
+    categoryIds: number[]
 }
 
 export type XtreamCategoryWithPreview = {
@@ -115,7 +115,7 @@ export type XtreamCategoryWithPreview = {
 }
   
 export type XtreamVodCategory = {
-    mediaType: XtreamMediaTipeMovies
+    mediaType: XtreamMediaTypeMovies
     category_id: string
     category_name: string
     parent_id: number
@@ -123,7 +123,7 @@ export type XtreamVodCategory = {
 }
   
 export type XtreamLiveCategory = {
-    mediaType: XtreamMediaTipeLive
+    mediaType: XtreamMediaTypeLive
     category_id: string
     category_name: string
     parent_id: number
@@ -131,7 +131,7 @@ export type XtreamLiveCategory = {
 }
   
 export type XtreamSeriesCategory = {
-    mediaType: XtreamMediaTipeSeries
+    mediaType: XtreamMediaTypeSeries
     category_id: string
     category_name: string
     parent_id: number
@@ -143,13 +143,13 @@ export type XtreamSeriesInfo = {
     name: string
     series_id: number
     cover: string
-    plot: string | null
-    cast: string | null
-    director: string | null
-    genre: string | null
-    releaseDate: string | null
+    plot: string
+    cast: string
+    director: string
+    genre: string
+    releaseDate: string
     last_modified: string
-    rating: string | null
+    rating: string
     rating_5based: number
     backdrop_path: string[]
     youtube_trailer: string
@@ -204,6 +204,72 @@ export type XtreamVodInfoResponse = {
     info: XtreamMovieInfo
     movie_data: XtreamMovieData
 }
+
+export type XtreamPreviewDetailMovie = {
+    mediaType: XtreamMediaTypeMovies
+    episodes?: never
+    seasons?: never
+}
+
+export type XtreamPreviewDetailSerie = {
+    mediaType: XtreamMediaTypeSeries
+    episodes: XtreamPreviewDetailSerieEpisodes
+    seasons: XtreamPreviewDetailSerieSeason[]
+}
+
+export type XtreamPreviewDetailSerieEpisodes = {
+    [season_number: string]: XtreamPreviewDetailSerieEpisode[]
+}
+
+export type XtreamPreviewDetailSerieEpisode = {
+    id: string
+    episodeNum: number
+    title: string
+    season: number
+    info: XtreamPreviewDetailSerieEpisodeInfo
+}
+
+export type XtreamPreviewDetailSerieEpisodeInfo = {
+    id: string
+    plot: string
+    duration: string
+    durationSecs: number
+    cover: string
+    rating?: number | string | null
+    rating5Based?: number | string | null
+}
+
+export type XtreamPreviewDetailSerieSeason = {
+    airDate: string
+    episodeCount: number
+    id: number
+    name: string
+    overview: string
+    seasonNumber: number
+    cover: string
+    coverBig: string
+}
+
+export type XtreamPreviewDetail = {
+    id: number
+    title: string
+    cover: string
+    coverBig?: string
+    trailer?: string
+    rating?: number | string | null
+    rating5Based?: number | string | null
+    categoryId: number
+    categoryIds: number[]
+    releaseDate: string
+    duration: string
+    durationSecs: number
+    runTime: string
+    director: string
+    cast: string
+    plot: string
+    genre: string
+    status: string
+} & (XtreamPreviewDetailMovie | XtreamPreviewDetailSerie)
   
 export type XtreamEpisode = {
     id: string

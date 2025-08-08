@@ -65,7 +65,7 @@ export function MovieDetail() {
           <div className="flex justify-center items-center flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
             <div className="flex items-center gap-1.5">
               <Star className="w-4 h-4 text-primary" />
-              <span>{Number(item.rating_5based)?.toFixed(1) ?? 'N/A'}</span>
+              <span>{Number(item.rating5Based)?.toFixed(1) ?? 'N/A'}</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Clock className="w-4 h-4 text-primary" />

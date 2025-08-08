@@ -22,7 +22,7 @@ export default function LiveCategoryPage() {
   
   const items = live
     .map(mapXtreamLiveStreamToXtreamPreview)
-    .filter(item => item.category_ids.includes(categoryId))
+    .filter(item => item.categoryIds.includes(categoryId))
     .filter(item => item.title.toLowerCase().includes(searchInputValue.toLowerCase()));
 
 
