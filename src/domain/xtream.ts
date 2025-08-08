@@ -254,7 +254,7 @@ export type XtreamPreviewDetail = {
     id: number
     title: string
     cover: string
-    coverBig?: string
+    coverBig: string
     trailer?: string
     rating?: number | string | null
     rating5Based?: number | string | null
@@ -264,6 +264,7 @@ export type XtreamPreviewDetail = {
     duration: string
     durationSecs: number
     runTime: string
+    directors: string
     director: string
     cast: string
     plot: string
@@ -339,3 +340,6 @@ export const XTREAM_MEDIA_TYPES_TO_STRING = {
 
 export const xtreamMediaTypeToString = (mediaType: XtreamMediaType) =>
     XTREAM_MEDIA_TYPES_TO_STRING[mediaType]
+
+export const xtreamDirectorsToDirector = (directors: string) =>
+    directors.split(',').at(0) ?? ''

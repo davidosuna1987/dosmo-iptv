@@ -1,4 +1,4 @@
-import { XTREAM_MEDIA_TYPES, XtreamPreview, XtreamPreviewDetail, XtreamVodInfoResponse, XtreamVodStream } from "@/domain/xtream";
+import { XTREAM_MEDIA_TYPES, xtreamDirectorsToDirector, XtreamPreview, XtreamPreviewDetail, XtreamVodInfoResponse, XtreamVodStream } from "@/domain/xtream";
 
 export const ratingToRating5Based = (rating: number | string | null) => 
     (Number(rating) / 2).toFixed(2);
@@ -36,7 +36,8 @@ export const mapXtreamVodinfoResponseToXtreamPreviewDetail = (
         duration: response.info.duration,
         durationSecs: Number(response.info.duration_secs),
         runTime: response.info.runtime,
-        director: response.info.director,
+        director: xtreamDirectorsToDirector(response.info.director),
+        directors: response.info.director,
         cast: response.info.cast,
         plot: response.info.plot,
         genre: response.info.genre,

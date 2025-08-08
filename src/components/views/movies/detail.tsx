@@ -7,35 +7,22 @@ import { Plus, Calendar, Star, Grid, Film, Clock } from 'lucide-react';
 import { safeUrl } from '@/domain/url';
 import { PlayIcon } from '@/components/ui/play-icon';
 import { Progress } from '@/components/ui/progress';
-import { useLocalXtreamData } from '@/hooks/use-local-xtream-data';
-import { XTREAM_MEDIA_TYPES, XtreamPreview, XtreamVodStream } from '@/domain/xtream';
-import { useEffect, useState } from 'react';
-import { NotFound } from '@/components/common/not-found';
+import { XtreamPreviewDetail, } from '@/domain/xtream';
 
-export function MovieDetail() {
-  const { moviesCategories, isLoading } = useLocalXtreamData(XTREAM_MEDIA_TYPES.movies);
-
-  const [secureUrl, setSecureUrl] = useState<string>();
-  const [item, setItem] = useState<XtreamPreview>();
-
-  useEffect(() => {
-    if (!moviesCategories?.length || !moviesCategories?.at(1)?.preview?.length || isLoading) return;
-
-    const item = moviesCategories?.at(1)?.preview.at(2);
-
-    setItem(item);
-    setSecureUrl(safeUrl(item!.cover));
-  }, [moviesCategories])
-
-  if(!secureUrl || !item) return <NotFound />;
+type MovieDetailProps = {
+  details: XtreamPreviewDetail
+}
+export function MovieDetail({ details }: MovieDetailProps) {
+  const secureCover = safeUrl(details.cover);
+  const secureCoverBig = safeUrl(details.coverBig);
   
   return (
     <div className="relative -mx-4 md:-mx-6 flex-1">
       {/* Background Image */}
       <div className='fixed inset-0 size-full after:content-[""] after:absolute after:inset-0 after:pointer-events-none after:bg-gradient-to-t after:from-black after:to-black/75'>
         <Image
-          src={secureUrl}
-          alt={`item.name`}
+          src={secureCoverBig}
+          alt={details.title}
           layout="fill"
           className="object-cover size-full"
           priority
@@ -45,11 +32,11 @@ export function MovieDetail() {
       </div>
 
       {/* Foreground Content */}
-      <div className="relative pt-24 pb-40 px-4 md:px-6 text-white flex flex-col items-center text-center">
+      <div className="relative py-16 px-4 md:px-6 text-white flex flex-col items-center text-center">
         <div className="w-full max-w-[240px] md:max-w-[280px] rounded-lg overflow-hidden shadow-lg">
           <Image
-            src={secureUrl}
-            alt={`item.name`}
+            src={secureCover}
+            alt={details.title}
             width={280}
             height={420}
             className="object-cover w-full"
@@ -60,31 +47,31 @@ export function MovieDetail() {
         </div>
 
         <div className="mt-6 space-y-4 w-full max-w-lg mx-auto">
-          <h1 className="text-2xl md:text-3xl font-bold">{`item.title`} ({`item.releasedate?.substring(0,4)`})</h1>
+          <h1 className="text-2xl md:text-3xl font-bold">{details.title}</h1>
           
           <div className="flex justify-center items-center flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
             <div className="flex items-center gap-1.5">
               <Star className="w-4 h-4 text-primary" />
-              <span>{Number(item.rating5Based)?.toFixed(1) ?? 'N/A'}</span>
+              <span>{details.rating5Based ?? 'N/A'}</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Clock className="w-4 h-4 text-primary" />
-              <span>{`item.duration`}</span>
+              <span>{details.duration}</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Film className="w-4 h-4 text-primary" />
-              <span>{typeof `item.director` === 'string' || 'N/A'}</span>
+              <span>{details.director || 'N/A'}</span>
             </div>
           </div>
 
           <div className="flex justify-center items-center flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
             <div className="flex items-center gap-1.5">
                 <Calendar className="w-4 h-4 text-primary" />
-                <span>{`item.releasedate`}</span>
+                <span>{details.releaseDate?.substring(0,4)}</span>
             </div>
             <div className="flex items-center gap-1.5">
                 <Grid className="w-4 h-4 text-primary" />
-                <span>{typeof `item.genre` === 'string' || 'N/A'}</span>
+                <span>{details.genre || 'N/A'}</span>
             </div>
           </div>
           
@@ -92,7 +79,7 @@ export function MovieDetail() {
             <div className="absolute -top-2 w-full">
               <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <span>0m 0s</span>
-                  <span>{`item.duration`}</span>
+                  <span>{details.duration}</span>
               </div>
               <Progress value={0} className="h-1.5" />
             </div>
@@ -107,11 +94,11 @@ export function MovieDetail() {
           </div>
 
           <div className="text-left text-sm space-y-4 pt-4">
-            <p className="text-foreground/90">{`item.plot`}</p>
-            {typeof `item.cast` === 'string' && (
+            <p className="text-foreground/90">{details.plot}</p>
+            {details.cast && (
               <div className="flex items-start gap-2">
                 <Grid className="w-4 h-4 mt-0.5 shrink-0" />
-                <p><span className="font-semibold">Actores:</span> {`item.cast`}</p>
+                <p><span className="font-semibold mr-1.5">Reparto:</span>{details.cast}</p>
               </div>
             )}
           </div>

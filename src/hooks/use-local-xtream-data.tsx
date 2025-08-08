@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { openDB } from "idb";
 import { useXtreamCredentials } from "@/hooks/use-xtream-credentials";
 import { useXtreamClient } from "@/services/xtream";
-import { ProfileInfo, XtreamPreview, XtreamCategoryWithPreview, XtreamSeriesInfo, XtreamVodCategory, XtreamVodStream, XtreamMediaType, XTREAM_MEDIA_TYPES, XtreamLiveStream, XtreamLiveCategory, XtreamSeriesCategory, ProfileDetails } from "@/domain/xtream";
+import { ProfileInfo, XtreamPreview, XtreamCategoryWithPreview, XtreamSeriesInfo, XtreamVodCategory, XtreamVodStream, XtreamMediaType, XTREAM_MEDIA_TYPES, XtreamLiveStream, XtreamLiveCategory, XtreamSeriesCategory, ProfileDetails, XtreamPreviewDetailMovie, XtreamVodInfoResponse, XtreamPreviewDetail } from "@/domain/xtream";
 import { sortByRating } from "@/domain/rating";
-import { mapXtreamVodStreamToXtreamPreview } from "@/domain/movies";
+import { mapXtreamVodinfoResponseToXtreamPreviewDetail, mapXtreamVodStreamToXtreamPreview } from "@/domain/movies";
 import { mapXtreamSeriesInfoToXtreamPreview } from "@/domain/series";
 import { mapXtreamLiveStreamToXtreamPreview } from "@/domain/live";
 import { EMPTY_PROFILE_DETAILS, mapProfileInfoToProfileDetails } from "@/domain/profile";
@@ -19,8 +19,10 @@ async function getDB() {
         [
           "movies_categories",
           "movies",
+          "movie_details",
           "series_categories",
           "series",
+          "serie_details",
           "live_categories",
           "live",
           "profile",
@@ -33,25 +35,33 @@ async function getDB() {
     });
   }
 
-export function useLocalXtreamData(mediaType?: XtreamMediaType) {
+export function useLocalXtreamData(mediaType?: XtreamMediaType, id?: string) {
   const { credentials } = useXtreamCredentials();
   const { getClient } = useXtreamClient();
+
+  const detailId = id?.length ? id : undefined;
 
   const [profileInfo, setProfileInfo] = useState<ProfileInfo | undefined>(undefined);
   const [moviesCategories, setMoviesCategories] = useState<XtreamCategoryWithPreview[]>([]);
   const [movies, setMovies] = useState<XtreamVodStream[]>([]);
+  const [movieDetails, setMovieDetails] = useState<XtreamPreviewDetail>();
   const [moviesHero, setMoviesHero] = useState<XtreamPreview | undefined>(undefined);
   const [seriesCategories, setSeriesCategories] = useState<XtreamCategoryWithPreview[]>([]);
   const [series, setSeries] = useState<XtreamSeriesInfo[]>([]);
+  const [serieDetails, setSerieDetails] = useState<XtreamPreviewDetail>();
   const [seriesHero, setSeriesHero] = useState<XtreamPreview | undefined>(undefined);
   const [liveCategories, setLiveCategories] = useState<XtreamCategoryWithPreview[]>([]);
   const [live, setLive] = useState<XtreamLiveStream[]>([]);
+  // const [liveDetails, setLiveDetails] = useState<XtreamPreviewDetailLive>()
   const [profileDetails, setProfileDetails] = useState<ProfileDetails>(EMPTY_PROFILE_DETAILS)
   const [isLoading, setIsLoading] = useState(true);
 
   const loadMovies = !mediaType || mediaType === XTREAM_MEDIA_TYPES.movies;
   const loadSeries = !mediaType || mediaType === XTREAM_MEDIA_TYPES.series;
   const loadLive = !mediaType || mediaType === XTREAM_MEDIA_TYPES.live;
+  const loadMovieDetails = id && mediaType === XTREAM_MEDIA_TYPES.movies;
+  const loadSerieDetails = id && mediaType === XTREAM_MEDIA_TYPES.series;
+  const loadLiveDetails = id && mediaType === XTREAM_MEDIA_TYPES.live;
 
   useEffect(() => {
     const pickRandomXtreamPreview = (previews: XtreamPreview[]): XtreamPreview =>
@@ -77,6 +87,9 @@ export function useLocalXtreamData(mediaType?: XtreamMediaType) {
         let storedSeries = await db.get("series", "all");
         let storedLiveCategories = await db.get("live_categories", "all");
         let storedLive = await db.get("live", "all");
+
+        let storedMovieDetails = id ? await db.get("movie_details", id) : null;
+        let storedSerieDetails = id ? await db.get("serie_details", id) : null;
 
         setProfileDetails(
           mapProfileInfoToProfileDetails(
@@ -237,6 +250,22 @@ export function useLocalXtreamData(mediaType?: XtreamMediaType) {
           setLiveCategories(storedLiveCategories || []);
           setLive(storedLive || []);
         }
+
+        if(loadMovieDetails){
+          console.log(1)
+          if (!storedMovieDetails && detailId && client) {
+            console.log(2)
+            const apiMovieDetails = await client.getVodInfo(detailId);
+
+            if(apiMovieDetails) storedMovieDetails = 
+              mapXtreamVodinfoResponseToXtreamPreviewDetail(apiMovieDetails);
+
+            await db.put("movie_details", storedMovieDetails, detailId);
+            setMovieDetails(storedMovieDetails);
+          } else {
+            setMovieDetails(storedMovieDetails);
+          }
+        }
       } catch (err) {
         console.error("Error loading data:", err);
       } finally {
@@ -251,10 +280,12 @@ export function useLocalXtreamData(mediaType?: XtreamMediaType) {
     profileInfo, 
     moviesCategories, 
     movies, 
+    movieDetails,
     moviesHero, 
     seriesCategories, 
     series, 
     seriesHero, 
+    serieDetails,
     liveCategories,
     live,
     profileDetails,
