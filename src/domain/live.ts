@@ -1,8 +1,9 @@
-import { XtreamLiveStream, XtreamPreview } from "@/domain/xtream";
+import { XTREAM_MEDIA_TYPES, XtreamLiveStream, XtreamPreview } from "@/domain/xtream";
 
 export const mapXtreamLiveStreamToXtreamPreview = (
     liveStream: XtreamLiveStream
 ): XtreamPreview => ({
+    mediaType: XTREAM_MEDIA_TYPES.live,
     num: liveStream.num,
     id: liveStream.stream_id,
     title: liveStream.name,

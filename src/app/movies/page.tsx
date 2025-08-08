@@ -22,11 +22,11 @@ export default function MoviesPage() {
         <>
           <TopNavbar searchLink="/movies/list" />
 
-          { moviesHero && <Hero type={XTREAM_MEDIA_TYPES.movies} item={moviesHero} /> }
+          { moviesHero && <Hero item={moviesHero} /> }
 
           <CarouselSection>
             {moviesCategories.map(category => (
-              <CarouselWrapper key={category.category_id} mediaType={XTREAM_MEDIA_TYPES.movies} category={category} />
+              <CarouselWrapper key={category.category_id} category={category} />
             ))}
           </CarouselSection>
 

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { DosmoIptvLogo } from "../dosmo-iptv-logo";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
+import { TopNavbarWrapper } from "./top-navbar-wrapper";
 
 type TopNavbarProps = {
   title?: string;
@@ -16,7 +17,6 @@ type TopNavbarProps = {
 const DEFAULT_TITLE = 'DOSMO IPTV';
 
 export function TopNavbar({ title = DEFAULT_TITLE, searchLink, onInputChanged }: TopNavbarProps) {
-  const [scrolled, setScrolled] = useState(false);
   const [isSearchInputVisible, setIsSearchInputVisible] = useState(!searchLink);
   const [searchInputValue, setSearchInputValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -61,13 +61,6 @@ export function TopNavbar({ title = DEFAULT_TITLE, searchLink, onInputChanged }:
     if (!searchLink) {
       setInputFocus();
     }
-
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const showNavbarTitle = searchLink || !isSearchInputVisible
@@ -75,13 +68,7 @@ export function TopNavbar({ title = DEFAULT_TITLE, searchLink, onInputChanged }:
   const placeholder = title === DEFAULT_TITLE ? 'Buscar' : `Buscar en ${title.toLowerCase()}`
 
   return (
-    <div
-      className={`fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-between px-3 md:px-6 py-2 transition-colors duration-300 ${
-        scrolled
-          ? "bg-black/90 backdrop-blur-sm border-b border-white/25"
-          : "bg-transparent border-transparent"
-      }`}
-    >
+    <TopNavbarWrapper className="flex items-center justify-between">
       <h1 className="text-lg font-bold flex items-center gap-2">
         <DosmoIptvLogo className="w-8" />
         { showNavbarTitle && <span>{title}</span> }
@@ -124,6 +111,6 @@ export function TopNavbar({ title = DEFAULT_TITLE, searchLink, onInputChanged }:
           </Button>
         )
       }
-    </div>
+    </TopNavbarWrapper>
   );
 }

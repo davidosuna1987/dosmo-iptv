@@ -4,14 +4,13 @@
 import { useRouter } from "next/navigation";
 import { ChevronLeft, Cast } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TopNavbarWrapper } from "./top-navbar-wrapper";
 
 export function TopDetailNavbar() {
   const router = useRouter();
 
   return (
-    <div
-      className="fixed top-0 left-0 right-0 z-50 w-full flex items-center justify-between px-3 md:px-6 py-2 transition-colors duration-300 bg-black/90 backdrop-blur-sm border-b border-white/25"
-    >
+    <TopNavbarWrapper className="flex items-center justify-between">
       <Button
         variant="ghost"
         size="icon"
@@ -25,7 +24,7 @@ export function TopDetailNavbar() {
           <Cast className="size-6" />
         </Button>
       </div>
-    </div>
+    </TopNavbarWrapper>
   );
 }
 

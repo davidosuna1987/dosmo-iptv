@@ -116,10 +116,11 @@ export function useLocalXtreamData(mediaType?: XtreamMediaType) {
               } : prev))
             }
 
-            const categoriesWithPreview = storedMoviesCategories.map((cat: XtreamSeriesCategory) => ({
+            const categoriesWithPreview = storedMoviesCategories.map((cat: XtreamVodCategory) => ({
               ...cat,
+              mediaType: XTREAM_MEDIA_TYPES.movies,
               preview: storedMovies
-                .filter((m: XtreamSeriesInfo) => m.category_id === cat.category_id)
+                .filter((m: XtreamVodStream) => m.category_id === cat.category_id)
                 .slice(0, 10)
                 .map(mapXtreamVodStreamToXtreamPreview),
             }));
@@ -162,10 +163,11 @@ export function useLocalXtreamData(mediaType?: XtreamMediaType) {
               } : prev))
             }
 
-            const categoriesWithPreview = storedSeriesCategories.map((cat: XtreamVodCategory) => ({
+            const categoriesWithPreview = storedSeriesCategories.map((cat: XtreamSeriesCategory) => ({
               ...cat,
+              mediaType: XTREAM_MEDIA_TYPES.series,
               preview: storedSeries
-                .filter((m: XtreamVodStream) => m.category_id === cat.category_id)
+                .filter((m: XtreamSeriesInfo) => m.category_id === cat.category_id)
                 .slice(0, 10)
                 .map(mapXtreamSeriesInfoToXtreamPreview),
             }));
@@ -210,6 +212,7 @@ export function useLocalXtreamData(mediaType?: XtreamMediaType) {
 
             const categoriesWithPreview = storedLiveCategories.map((cat: XtreamLiveCategory) => ({
               ...cat,
+              mediaType: XTREAM_MEDIA_TYPES.live,
               preview: storedLive
                 .filter((m: XtreamLiveStream) => m.category_id === cat.category_id)
                 .slice(0, 10)

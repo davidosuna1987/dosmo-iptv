@@ -18,8 +18,8 @@ export function LiveStreamCard({ item }: LiveStreamCardProps) {
           width={200}
           height={300}
           className="object-cover w-full aspect-square group-hover:scale-110 transition-transform duration-200"
-          data-ai-hint="live stream poster"
-          unoptimized // Added because the image domains from the API are unknown
+          data-ai-hint={`Poster de ${item.title}`}
+          unoptimized
         />
       </div>
       <div className='bg-secondary group h-12 flex items-center px-2 pt-1'>

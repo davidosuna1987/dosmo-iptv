@@ -22,7 +22,7 @@ export default function LivePage() {
           <TopNavbar searchLink="/live/list" />
           <CarouselSection>
               {liveCategories.map(category => (
-                  <LiveStreamWrapper key={category.category_id} mediaType={XTREAM_MEDIA_TYPES.live} category={category} />
+                  <LiveStreamWrapper key={category.category_id} category={category} />
               ))}
           </CarouselSection>
           <BottomNavBar />

@@ -1,8 +1,9 @@
-import { XtreamMovieInfo, XtreamPreview, XtreamVodStream } from "@/domain/xtream";
+import { XTREAM_MEDIA_TYPES, XtreamPreview, XtreamVodStream } from "@/domain/xtream";
 
 export const mapXtreamVodStreamToXtreamPreview = (
     vodStream: XtreamVodStream
 ): XtreamPreview => ({
+    mediaType: XTREAM_MEDIA_TYPES.movies,
     num: vodStream.num,
     id: vodStream.stream_id,
     title: vodStream.name,

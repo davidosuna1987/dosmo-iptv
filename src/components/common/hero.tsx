@@ -8,16 +8,15 @@ import { safeUrl } from '@/domain/url';
 import { PlayIcon } from '../ui/play-icon';
 
 interface HeroProps {
-  type: XtreamMediaType
   item: XtreamPreview;
 }
 
-export function Hero({ type, item }: HeroProps) {
+export function Hero({ item }: HeroProps) {
   const secureUrl = safeUrl(item.cover)
   
   return (
     <div className="flex justify-center bg-background relative -mx-4 md:-mx-8">
-      <div className='absolute size-full after:content-[""] after:absolute after:inset-0 after:pointer-events-none after:bg-gradient-to-t after:from-black after:to-black/90'> {/*after:bg-background after:opacity-[0.925]*/}
+      <div className='absolute size-full after:content-[""] after:absolute after:inset-0 after:pointer-events-none after:bg-gradient-to-t after:from-black after:to-black/75'> {/*after:bg-background after:opacity-[0.925]*/}
         <Image
           src={secureUrl}
           alt={item.title}
@@ -45,7 +44,7 @@ export function Hero({ type, item }: HeroProps) {
           <div className="space-y-3">
               <p className="text-sm font-semibold tracking-wide uppercase text-primary flex items-center gap-3">
                 <DosmoIptvLogo className='w-8' />
-                {xtreamMediaTypeToString(type)}
+                {xtreamMediaTypeToString(item.mediaType)}
               </p>
               <div className="grid grid-cols-2 gap-3">
                   <Button size="lg" className="w-full font-bold border-0">
