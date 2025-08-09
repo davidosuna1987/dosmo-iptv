@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 
 /**
  * Mirrors públicos de Radio Browser.
-  * Probamos varios por si alguno está caído/lento.
-   */
+ * Probamos varios por si alguno está caído/lento.
+ */
 const RADIO_BROWSER_MIRRORS = [
   "https://de1.api.radio-browser.info",
   "https://de2.api.radio-browser.info",
@@ -14,17 +14,17 @@ const RADIO_BROWSER_MIRRORS = [
 
 /**
  * GET /api/radio
-  *
-   * Query params soportados:
-    * - q: texto de búsqueda (nombre/tags)
-     * - country: país (e.g. Spain)
-      * - language: idioma (e.g. Spanish)
-       * - tag: género/etiqueta (e.g. pop)
-        * - limit: nº de resultados (default 200, máx 500)
-         * - offset: para paginación (default 0)
-          * - order: campo de orden (name|clickcount|bitrate) default clickcount
-           * - reverse: "true" para invertido
-            */
+ *
+ * Query params soportados:
+ * - q: texto de búsqueda (nombre/tags)
+ * - country: país (e.g. Spain)
+ * - language: idioma (e.g. Spanish)
+ * - tag: género/etiqueta (e.g. pop)
+ * - limit: nº de resultados (default 200, máx 500)
+ * - offset: para paginación (default 0)
+ * - order: campo de orden (name|clickcount|bitrate) default clickcount
+ * - reverse: "true" para invertido
+ */
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
 

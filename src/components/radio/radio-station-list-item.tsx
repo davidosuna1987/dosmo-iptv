@@ -13,7 +13,7 @@ function fallbackFavicon(name: string) {
 export function RadioStationListItem({ item }: { item: XtreamRadioStation }) {
   const cover = safeUrl(decodeURIComponent(item.favicon || fallbackFavicon(item.name))).trim();
   // Si quieres una página de detalle de radio: /radio/[id]
-  const detailUrl = `/radio/${encodeURIComponent(item.id)}`;
+  const detailUrl = safeUrl(decodeURIComponent(item.favicon)) //`/radio/${encodeURIComponent(item.id)}`;
 
   return (
     <Link href={detailUrl} className="list-item relative w-full flex-shrink-0 snap-start overflow-hidden group">
