@@ -31,13 +31,13 @@ export function Hero({ item }: HeroProps) {
           
         />
       </div>
-      <div className="relative w-full max-w-[280px] md:max-w-[400px] lg:max-w-[500px] h-full rounded-xl overflow-hidden pt-16">
+      <div className="relative w-full max-w-[280px] md:max-w-[400px] lg:max-w-[400px] h-full rounded-xl overflow-hidden pt-16">
         <Image
           src={secureUrl}
           alt={item.title}
           width={200}
           height={300}
-          className="object-cover size-full"
+          className="object-cover size-full rounded-xl"
           priority
           data-ai-hint="movie poster"
           unoptimized
