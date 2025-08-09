@@ -56,9 +56,9 @@ export async function GET(req: Request) {
     const stations: XtreamRadioStation[] = (json as any[]).map((s) => ({
       id: s.id,
       name: s.name,
-      url: encodeURIComponent(s.url_resolved || s.url).trim(),
-      homepage: encodeURIComponent(s.homepage || s.homepage_url || s.homepage_resolved).trim(),
-      favicon: encodeURIComponent(s.favicon).trim(),
+      url: (s.url_resolved || s.url || '').trim(),
+      homepage: (s.homepage || s.homepage_url || s.homepage_resolved || '').trim(),
+      favicon: (s.favicon || '').trim(),
       country: s.country,
       state: s.state,
       language: Array.isArray(s.language) ? s.language[0] : s.language,

@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link';
-import { Clapperboard, Library, Tv } from 'lucide-react';
+import { Clapperboard, Library, Radio, Tv } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { DosmoIptvLogo } from '../dosmo-iptv-logo';
 import { useXtreamCredentials } from '@/hooks/use-xtream-credentials';
@@ -12,6 +12,7 @@ export function BottomNavBar() {
     { href: '/movies', icon: Clapperboard, label: 'Películas' },
     { href: '/series', icon: Library, label: 'Series' },
     { href: '/live', icon: Tv, label: 'Live' },
+    { href: '/radio', icon: Radio, label: 'Radio' },
     { href: '/profile', icon: DosmoIptvLogo, label: 'Perfil' },
   ];
 

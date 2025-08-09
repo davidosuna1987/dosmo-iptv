@@ -10,7 +10,7 @@ import { RadioStationChunkList } from '@/components/radio/radio-station-chunk-li
 
 export default function RadioStationPage() {
   const [search, setSearch] = useState('');
-  const { stations, isLoading, setQuery, query } = useRadioStations({ limit: 300 });
+  const { stations, isLoading, setQuery, query } = useRadioStations({ limit: 300, country: 'Spain' });
 
   // filtro client-side adicional por nombre
   const filtered = useMemo(() => {
